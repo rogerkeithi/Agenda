@@ -36,7 +36,9 @@ public class Tela extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(640, 480));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
         jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
+        jTabbedPane1.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
 
         jLabel1.setText("Pinto");
 
@@ -47,30 +49,30 @@ public class Tela extends javax.swing.JFrame {
             .addGroup(pinicioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1165, Short.MAX_VALUE))
+                .addContainerGap(1155, Short.MAX_VALUE))
         );
         pinicioLayout.setVerticalGroup(
             pinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pinicioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(630, Short.MAX_VALUE))
+                .addContainerGap(620, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Inicio", pinicio);
+        jTabbedPane1.addTab("  Inicio  ", pinicio);
 
         javax.swing.GroupLayout pmenuLayout = new javax.swing.GroupLayout(pmenu);
         pmenu.setLayout(pmenuLayout);
         pmenuLayout.setHorizontalGroup(
             pmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGap(0, 1270, Short.MAX_VALUE)
         );
         pmenuLayout.setVerticalGroup(
             pmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 687, Short.MAX_VALUE)
+            .addGap(0, 677, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Menu", pmenu);
+        jTabbedPane1.addTab("  Menu  ", pmenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
