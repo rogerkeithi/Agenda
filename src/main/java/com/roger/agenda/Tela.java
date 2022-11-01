@@ -28,35 +28,37 @@ public class Tela extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         pinicio = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jDayChooser1 = new com.toedter.calendar.JDayChooser();
         pmenu = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(38, 34, 26));
         setMinimumSize(new java.awt.Dimension(640, 480));
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(51, 51, 51));
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        jTabbedPane1.setForeground(new java.awt.Color(0, 0, 0));
         jTabbedPane1.setFont(new java.awt.Font("Rockwell", 0, 18)); // NOI18N
 
-        jLabel1.setText("Pinto");
+        pinicio.setBackground(new java.awt.Color(153, 153, 153));
+
+        jDayChooser1.setForeground(new java.awt.Color(102, 102, 102));
+        jDayChooser1.setAlwaysFireDayProperty(false);
+        jDayChooser1.setDayBordersVisible(true);
+        jDayChooser1.setDecorationBackgroundColor(new java.awt.Color(51, 51, 51));
+        jDayChooser1.setFont(new java.awt.Font("Microsoft YaHei", 0, 18)); // NOI18N
+        jDayChooser1.setWeekdayForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout pinicioLayout = new javax.swing.GroupLayout(pinicio);
         pinicio.setLayout(pinicioLayout);
         pinicioLayout.setHorizontalGroup(
             pinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pinicioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1155, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pinicioLayout.createSequentialGroup()
+                .addGap(0, 341, Short.MAX_VALUE)
+                .addComponent(jDayChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pinicioLayout.setVerticalGroup(
             pinicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pinicioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(620, Short.MAX_VALUE))
+            .addComponent(jDayChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("  Inicio  ", pinicio);
@@ -65,11 +67,11 @@ public class Tela extends javax.swing.JFrame {
         pmenu.setLayout(pmenuLayout);
         pmenuLayout.setHorizontalGroup(
             pmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1270, Short.MAX_VALUE)
+            .addGap(0, 1274, Short.MAX_VALUE)
         );
         pmenuLayout.setVerticalGroup(
             pmenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 677, Short.MAX_VALUE)
+            .addGap(0, 694, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("  Menu  ", pmenu);
@@ -124,7 +126,7 @@ public class Tela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private com.toedter.calendar.JDayChooser jDayChooser1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel pinicio;
     private javax.swing.JPanel pmenu;
