@@ -4,6 +4,14 @@
  */
 package com.roger.agenda;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author roger
@@ -27,47 +35,135 @@ public class TelaLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        labelTitulo = new javax.swing.JLabel();
+        labelUsuario = new javax.swing.JLabel();
+        fieldUsuario = new javax.swing.JTextField();
+        labelSenha = new javax.swing.JLabel();
+        fieldSenha = new javax.swing.JPasswordField();
+        checkLembrardemim = new javax.swing.JCheckBox();
+        btnEntrar = new javax.swing.JButton();
+        btnCadastrese = new javax.swing.JButton();
+        labelCadastrese = new javax.swing.JLabel();
+        labelErro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bem-Vindo!");
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(204, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.setForeground(new java.awt.Color(25, 23, 23));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setBackground(new java.awt.Color(153, 0, 153));
-        jLabel1.setFont(new java.awt.Font("MS UI Gothic", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 0, 102));
-        jLabel1.setText("Bem vindo à sua agenda!");
+        labelTitulo.setBackground(new java.awt.Color(153, 0, 153));
+        labelTitulo.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
+        labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        labelTitulo.setText("Bem vindo a sua agenda!");
 
-        jLabel2.setForeground(new java.awt.Color(102, 0, 102));
-        jLabel2.setText("LOGIN");
+        labelUsuario.setBackground(new java.awt.Color(51, 51, 51));
+        labelUsuario.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        labelUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        labelUsuario.setText("USUÁRIO: ");
+
+        fieldUsuario.setBackground(new java.awt.Color(51, 51, 51));
+        fieldUsuario.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        fieldUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        fieldUsuario.setToolTipText("");
+        fieldUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldUsuarioActionPerformed(evt);
+            }
+        });
+
+        labelSenha.setBackground(new java.awt.Color(51, 51, 51));
+        labelSenha.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        labelSenha.setForeground(new java.awt.Color(255, 255, 255));
+        labelSenha.setText("SENHA: ");
+
+        fieldSenha.setBackground(new java.awt.Color(51, 51, 51));
+        fieldSenha.setForeground(new java.awt.Color(255, 255, 255));
+
+        checkLembrardemim.setBackground(new java.awt.Color(51, 51, 51));
+        checkLembrardemim.setForeground(new java.awt.Color(255, 255, 255));
+        checkLembrardemim.setText("Lembre de mim");
+
+        btnEntrar.setBackground(new java.awt.Color(51, 51, 51));
+        btnEntrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
+
+        btnCadastrese.setBackground(new java.awt.Color(51, 51, 51));
+        btnCadastrese.setForeground(new java.awt.Color(0, 0, 0));
+        btnCadastrese.setText("Cadastre-se");
+        btnCadastrese.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastreseActionPerformed(evt);
+            }
+        });
+
+        labelCadastrese.setBackground(new java.awt.Color(51, 51, 51));
+        labelCadastrese.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        labelCadastrese.setForeground(new java.awt.Color(255, 255, 255));
+        labelCadastrese.setText("Ainda não tem uma conta?");
+
+        labelErro.setForeground(new java.awt.Color(255, 51, 51));
+        labelErro.setText(".");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(61, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(jLabel2)))
-                .addContainerGap(82, Short.MAX_VALUE))
+                    .addComponent(labelErro, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCadastrese, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(labelTitulo)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labelUsuario)
+                                .addComponent(labelSenha))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(fieldUsuario)
+                                .addComponent(fieldSenha)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(checkLembrardemim)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelCadastrese))))
+                .addGap(60, 60, 60))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGap(40, 40, 40)
+                .addComponent(labelTitulo)
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelUsuario)
+                    .addComponent(fieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelSenha)
+                    .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkLembrardemim)
+                    .addComponent(labelCadastrese))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEntrar)
+                    .addComponent(btnCadastrese))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelErro, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -83,6 +179,60 @@ public class TelaLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    Connection con;
+    
+    private void fieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldUsuarioActionPerformed
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        String query = "SELECT  USUARIO, SENHA_PESSOA from tb_usuario WHERE USUARIO = ? AND SENHA_PESSOA = ?";
+        PreparedStatement ps;
+        ResultSet rs;
+        String usuario = fieldUsuario.getText();
+        char[] senha = fieldSenha.getPassword();
+        String senha_string = String.valueOf(senha);
+        try {
+            ConnectionFactory cf = new ConnectionFactory();
+            con = cf.getConnection();
+            con.setAutoCommit(false);
+            ps = con.prepareStatement(query);
+            ps.setString(1, usuario);
+            ps.setString(2, senha_string);
+            rs = ps.executeQuery();
+            con.commit();
+
+            String usuarioBD = "";
+            String senhaBD = "";
+
+            while (rs.next()) {
+                usuarioBD = rs.getString("USUARIO");
+                System.out.println(usuarioBD);
+                senhaBD = rs.getString("SENHA_PESSOA");
+                System.out.println(senhaBD);
+                
+                if(!senhaBD.equals(senha_string)){
+                    labelErro.setText("Usuário ou senha inválidos");
+                }else{
+                    System.out.println("LOGOU");
+                    this.setVisible(false);
+                    Tela tela = new Tela();
+                    tela.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    tela.setVisible(true);
+                }   
+            }
+
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void btnCadastreseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastreseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadastreseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,8 +270,16 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnCadastrese;
+    private javax.swing.JButton btnEntrar;
+    private javax.swing.JCheckBox checkLembrardemim;
+    private javax.swing.JPasswordField fieldSenha;
+    private javax.swing.JTextField fieldUsuario;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelCadastrese;
+    private javax.swing.JLabel labelErro;
+    private javax.swing.JLabel labelSenha;
+    private javax.swing.JLabel labelTitulo;
+    private javax.swing.JLabel labelUsuario;
     // End of variables declaration//GEN-END:variables
 }
