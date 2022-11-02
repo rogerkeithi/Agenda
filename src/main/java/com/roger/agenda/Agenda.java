@@ -24,9 +24,12 @@ public class Agenda {
            // handle exception
         }
         
+        TelaCadastro tc = new TelaCadastro();
+        tc.setLocationRelativeTo(null);
+        tc.setVisible(true);
         
-        Tela tela = new Tela();
-        tela.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        tela.setVisible(true);
+        //TelaLogin login = new TelaLogin();
+        //login.setLocationRelativeTo(null);
+        //login.setVisible(true);
     }
 }
