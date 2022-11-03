@@ -31,5 +31,7 @@ public class Agenda {
         //TelaLogin login = new TelaLogin();
         //login.setLocationRelativeTo(null);
         //login.setVisible(true);
+        
+        System.out.println("Wagner wasnot");
     }
 }
