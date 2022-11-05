@@ -19,7 +19,7 @@ public class Pessoa {
     public static String cidade;     
     public static String sigla_estado;
     public static String pais;
-    
+    /*
     public Pessoa(String nome, Date data_nasc, String email, int telefone1, int telefone2, ImageIcon foto,
                   String logradouro, int numero, String bairro, String complemento, int cep, String cidade, String sigla_estado, String pais
                  ){
@@ -39,6 +39,7 @@ public class Pessoa {
         this.sigla_estado = sigla_estado;
         this.pais = pais;
     }
+    */
     
     //MÉTODOS GET DO OBJ. PESSOA
     public String getNome(){
