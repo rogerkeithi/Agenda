@@ -32,6 +32,5 @@ public class Agenda {
         //login.setLocationRelativeTo(null);
         //login.setVisible(true);
         
-        System.out.println("Wagner wasnot");
     }
 }

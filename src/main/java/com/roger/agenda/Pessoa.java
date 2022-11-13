@@ -88,48 +88,48 @@ public class Pessoa {
     }
     
     //MÉTODOS SET DO OBJ. PESSOA
-    public void setNome(){
+    public void setNome(String nome){
         this.nome = nome;
     }
-    public void setData_nasc(){
+    public void setData_nasc(Date data_nasc){
         this.data_nasc = data_nasc;
     }
-    public void setEmail(){
+    public void setEmail(String email){
         this.email = email;
     }
-    public void setTelefone1(){
+    public void setTelefone1(int telefone1){
         this.telefone1 = telefone1;
     }
-    public void setTelefone2(){
+    public void setTelefone2(int telefone2){
         this.telefone2 = telefone2;
     }
-    public void setFoto(){
+    public void setFoto(ImageIcon foto){
         this.foto = foto;
     }
     
     //MÉTODOS SET DO OBJ. ENDEREÇO
-    public void setLogradouro(){
+    public void setLogradouro(String logradouro){
         this.logradouro = logradouro;
     }
-    public void setNumero(){
+    public void setNumero(int numero){
         this.numero = numero;
     }
-    public void setBairro(){
+    public void setBairro(String bairro){
         this.bairro = bairro;
     }
-    public void setComplemento(){
+    public void setComplemento(String complemento){
         this.complemento = complemento;
     }
-    public void setCep(){
+    public void setCep(int cep){
         this.cep = cep;
     }
-    public void setCidade(){
+    public void setCidade(String cidade){
         this.cidade = cidade;
     }
-    public void setSigla_estado(){
+    public void setSigla_estado(String sigla_estado){
         this.sigla_estado = sigla_estado;
     }
-    public void setPais(){
+    public void setPais(String pais){
         this.pais = pais;
     }
 }
