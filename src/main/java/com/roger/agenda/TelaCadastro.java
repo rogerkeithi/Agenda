@@ -66,16 +66,21 @@ public class TelaCadastro extends javax.swing.JFrame {
         btnProxCadEndereco = new javax.swing.JButton();
         btnAntCadEndereco = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
+        labelNumero = new javax.swing.JLabel();
+        labelLogradouro = new javax.swing.JLabel();
+        labelEstado = new javax.swing.JLabel();
+        labelCidade = new javax.swing.JLabel();
+        labelPais = new javax.swing.JLabel();
+        fieldLogradouro = new javax.swing.JTextField();
+        fieldNumero = new javax.swing.JTextField();
+        fieldCidade = new javax.swing.JTextField();
+        fieldEstado = new javax.swing.JTextField();
+        fieldPais = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         panelConfirmacao = new javax.swing.JPanel();
         btnConfirmacao = new javax.swing.JButton();
@@ -367,7 +372,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         titulo2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
@@ -409,6 +414,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         tabbedPaneMenu.addTab("Passo 2", panelCadDados);
 
         btnProxCadEndereco.setText("Próximo passo");
+        btnProxCadEndereco.setEnabled(false);
         btnProxCadEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProxCadEnderecoActionPerformed(evt);
@@ -425,38 +431,65 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setPreferredSize(new java.awt.Dimension(324, 288));
 
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel11.setText("Número");
+        labelNumero.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelNumero.setText("Número");
 
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel12.setText("Logradouro");
+        labelLogradouro.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelLogradouro.setText("Logradouro");
 
-        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel14.setText("Estado");
+        labelEstado.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelEstado.setText("Estado");
 
-        jLabel15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel15.setText("Cidade");
+        labelCidade.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelCidade.setText("Cidade");
 
-        jLabel16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel16.setText("País");
+        labelPais.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelPais.setText("País");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+        fieldLogradouro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                fieldLogradouroKeyReleased(evt);
             }
         });
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+        fieldNumero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                fieldNumeroKeyReleased(evt);
             }
         });
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+        fieldCidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                fieldCidadeKeyReleased(evt);
             }
         });
+
+        fieldEstado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                fieldEstadoKeyReleased(evt);
+            }
+        });
+
+        fieldPais.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                fieldPaisKeyReleased(evt);
+            }
+        });
+
+        jLabel9.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel9.setText("*");
+
+        jLabel11.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel11.setText("*");
+
+        jLabel12.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel12.setText("*");
+
+        jLabel14.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel14.setText("*");
+
+        jLabel15.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel15.setText("*");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -465,53 +498,75 @@ public class TelaCadastro extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel15)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(labelCidade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(labelEstado)
+                                .addGap(7, 7, 7)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fieldEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16)))
+                            .addComponent(fieldPais, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(labelPais)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fieldLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addGap(114, 114, 114)))
+                                .addComponent(labelLogradouro)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(82, 82, 82)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jTextField3))
-                .addContainerGap(38, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(labelNumero)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(fieldCidade))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
+                    .addComponent(labelLogradouro)
+                    .addComponent(labelNumero)
+                    .addComponent(jLabel9)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel15)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCidade)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel16))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelPais)
+                        .addComponent(jLabel15))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelEstado)
+                        .addComponent(jLabel14)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fieldPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
@@ -646,6 +701,12 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProxCadDadosActionPerformed
 
     private void btnProxCadEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProxCadEnderecoActionPerformed
+        pessoaCad.get(0).setLogradouro(logradouro);
+        pessoaCad.get(0).setNumero(numero);
+        pessoaCad.get(0).setCidade(cidade);
+        pessoaCad.get(0).setSigla_estado(sigla_estado);       
+        pessoaCad.get(0).setPais(pais);
+                
         tabbedPaneMenu.setSelectedIndex(3);
     }//GEN-LAST:event_btnProxCadEnderecoActionPerformed
 
@@ -654,18 +715,49 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfirmacaoActionPerformed
 
     private void btnAntCadDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntCadDadosActionPerformed
-        tabbedPaneMenu.setSelectedIndex(0);
         loginCad.removeAll(loginCad);
+        tabbedPaneMenu.setSelectedIndex(0);
     }//GEN-LAST:event_btnAntCadDadosActionPerformed
 
     private void btnAntCadEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntCadEnderecoActionPerformed
+        pessoaCad.removeAll(pessoaCad);
         tabbedPaneMenu.setSelectedIndex(1);
     }//GEN-LAST:event_btnAntCadEnderecoActionPerformed
 
     private void btnAntConfirmacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntConfirmacaoActionPerformed
+        pessoaCad.get(0).setLogradouro(null);
+        pessoaCad.get(0).setNumero(0);
+        pessoaCad.get(0).setCidade(null);
+        pessoaCad.get(0).setSigla_estado(null);       
+        pessoaCad.get(0).setPais(null);
+        
         tabbedPaneMenu.setSelectedIndex(2);
     }//GEN-LAST:event_btnAntConfirmacaoActionPerformed
-
+    
+    private void checkCamposEndereco(){
+        if(!fieldLogradouro.getText().isEmpty()){
+            if(!fieldNumero.getText().isEmpty()){
+                if(!fieldCidade.getText().isEmpty()){
+                    if(!fieldEstado.getText().isEmpty()){
+                        if(!fieldPais.getText().isEmpty()){
+                            this.btnProxCadEndereco.setEnabled(true);
+                        }else{
+                            this.btnProxCadEndereco.setEnabled(false);
+                        } 
+                    }else{
+                        this.btnProxCadEndereco.setEnabled(false);
+                    } 
+                }else{
+                    this.btnProxCadEndereco.setEnabled(false);
+                }    
+            }else{
+                this.btnProxCadEndereco.setEnabled(false);
+            }    
+        }else{
+            this.btnProxCadEndereco.setEnabled(false);
+        }
+    }
+    
     private void checkCamposDados(){
         if(!fieldNome.getText().isEmpty()){
             if(jDateChooser1.getDate() != null){
@@ -742,7 +834,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldUsuarioKeyReleased
 
     private void fieldNomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNomeKeyReleased
-       checkCamposDados();
+        checkCamposDados();
     }//GEN-LAST:event_fieldNomeKeyReleased
 
     private void fieldTelefone1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldTelefone1KeyReleased
@@ -753,17 +845,25 @@ public class TelaCadastro extends javax.swing.JFrame {
         checkCamposDados();
     }//GEN-LAST:event_fieldEmailKeyReleased
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void fieldLogradouroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldLogradouroKeyReleased
+        checkCamposEndereco();
+    }//GEN-LAST:event_fieldLogradouroKeyReleased
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    private void fieldNumeroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNumeroKeyReleased
+        checkCamposEndereco();
+    }//GEN-LAST:event_fieldNumeroKeyReleased
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    private void fieldCidadeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldCidadeKeyReleased
+        checkCamposEndereco();
+    }//GEN-LAST:event_fieldCidadeKeyReleased
+
+    private void fieldEstadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldEstadoKeyReleased
+        checkCamposEndereco();
+    }//GEN-LAST:event_fieldEstadoKeyReleased
+
+    private void fieldPaisKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldPaisKeyReleased
+       checkCamposEndereco();
+    }//GEN-LAST:event_fieldPaisKeyReleased
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -824,8 +924,13 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JButton btnProxCadDados;
     private javax.swing.JButton btnProxCadEndereco;
     private javax.swing.JButton btnProxCadLogin;
+    private javax.swing.JTextField fieldCidade;
     private javax.swing.JTextField fieldEmail;
+    private javax.swing.JTextField fieldEstado;
+    private javax.swing.JTextField fieldLogradouro;
     private javax.swing.JTextField fieldNome;
+    private javax.swing.JTextField fieldNumero;
+    private javax.swing.JTextField fieldPais;
     private javax.swing.JPasswordField fieldSenha;
     private javax.swing.JPasswordField fieldSenhaConfirm;
     private javax.swing.JTextField fieldTelefone1;
@@ -839,7 +944,6 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -847,17 +951,18 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel labelCidade;
     private javax.swing.JLabel labelDataNasc;
     private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelEstado;
+    private javax.swing.JLabel labelLogradouro;
     private javax.swing.JLabel labelNome;
+    private javax.swing.JLabel labelNumero;
+    private javax.swing.JLabel labelPais;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelSenhaConfirm;
     private javax.swing.JLabel labelTelefone1;
