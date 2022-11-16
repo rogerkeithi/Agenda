@@ -9,6 +9,8 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -85,6 +87,18 @@ public class TelaCadastro extends javax.swing.JFrame {
         panelConfirmacao = new javax.swing.JPanel();
         btnConfirmacao = new javax.swing.JButton();
         btnAntConfirmacao = new javax.swing.JButton();
+        labelNomeConfirma = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        labelNomeCompletoConfirma = new javax.swing.JLabel();
+        labelLogradouroConfirma = new javax.swing.JLabel();
+        labelDataNascConfirma = new javax.swing.JLabel();
+        labelNumeroConfirma = new javax.swing.JLabel();
+        labelTelefone1Confirma = new javax.swing.JLabel();
+        labelCidadeConfirma = new javax.swing.JLabel();
+        labelTelefone2Confirma = new javax.swing.JLabel();
+        labelEstadoConfirma = new javax.swing.JLabel();
+        labelEmailConfirma = new javax.swing.JLabel();
+        labelPaisConfirma = new javax.swing.JLabel();
 
         jLabel7.setForeground(new java.awt.Color(255, 102, 102));
         jLabel7.setText("*");
@@ -212,13 +226,14 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addComponent(btnProxCadLogin)
                 .addGap(25, 25, 25))
             .addGroup(panelCadLoginLayout.createSequentialGroup()
-                .addGap(223, 223, 223)
-                .addComponent(titulo)
-                .addContainerGap(222, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadLoginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelCadLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadLoginLayout.createSequentialGroup()
+                        .addGap(263, 263, 263)
+                        .addComponent(titulo))
+                    .addGroup(panelCadLoginLayout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(256, Short.MAX_VALUE))
         );
         panelCadLoginLayout.setVerticalGroup(
             panelCadLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +242,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addComponent(titulo)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(btnProxCadLogin)
                 .addGap(25, 25, 25))
         );
@@ -388,23 +403,24 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnProxCadDados)
                 .addGap(25, 25, 25))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadDadosLayout.createSequentialGroup()
-                .addContainerGap(178, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(178, 178, 178))
             .addGroup(panelCadDadosLayout.createSequentialGroup()
-                .addGap(223, 223, 223)
-                .addComponent(titulo2)
+                .addGroup(panelCadDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCadDadosLayout.createSequentialGroup()
+                        .addGap(263, 263, 263)
+                        .addComponent(titulo2))
+                    .addGroup(panelCadDadosLayout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelCadDadosLayout.setVerticalGroup(
             panelCadDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadDadosLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+            .addGroup(panelCadDadosLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addComponent(titulo2)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(55, 55, 55)
                 .addGroup(panelCadDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProxCadDados)
                     .addComponent(btnAntCadDados))
@@ -579,18 +595,19 @@ public class TelaCadastro extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadEnderecoLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(btnAntCadEndereco)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 468, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnProxCadEndereco)
                 .addGap(25, 25, 25))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadEnderecoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelCadEnderecoLayout.createSequentialGroup()
+                .addGap(220, 220, 220)
                 .addGroup(panelCadEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadEnderecoLayout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(178, 178, 178))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadEnderecoLayout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(194, 194, 194))))
+                        .addGap(214, 214, 214))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadEnderecoLayout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(183, 183, 183)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelCadEnderecoLayout.setVerticalGroup(
             panelCadEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -599,7 +616,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(panelCadEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProxCadEndereco)
                     .addComponent(btnAntCadEndereco))
@@ -622,21 +639,123 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
+        labelNomeConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        labelNomeConfirma.setText("NOME, confirme seus dados");
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        labelNomeCompletoConfirma.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelNomeCompletoConfirma.setText("Nome...................................................................................");
+
+        labelLogradouroConfirma.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelLogradouroConfirma.setText("Logradouro.........................................................................");
+
+        labelDataNascConfirma.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelDataNascConfirma.setText("DataNasc.............................................................................");
+
+        labelNumeroConfirma.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelNumeroConfirma.setText("Numero...............................................................................");
+
+        labelTelefone1Confirma.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelTelefone1Confirma.setText("Telefone1.............................................................................");
+
+        labelCidadeConfirma.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelCidadeConfirma.setText("Cidade.................................................................................");
+
+        labelTelefone2Confirma.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelTelefone2Confirma.setText("Telefone2.............................................................................");
+
+        labelEstadoConfirma.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelEstadoConfirma.setText("Estado..................................................................................");
+
+        labelEmailConfirma.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelEmailConfirma.setText("Email....................................................................................");
+
+        labelPaisConfirma.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        labelPaisConfirma.setText("Pais.......................................................................................");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(labelNomeCompletoConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(labelLogradouroConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(labelDataNascConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(labelNumeroConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(labelTelefone1Confirma, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(labelCidadeConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(labelTelefone2Confirma, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(labelEstadoConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(labelEmailConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(labelPaisConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNomeCompletoConfirma)
+                    .addComponent(labelLogradouroConfirma))
+                .addGap(44, 44, 44)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelDataNascConfirma)
+                    .addComponent(labelNumeroConfirma))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTelefone1Confirma)
+                    .addComponent(labelCidadeConfirma))
+                .addGap(45, 45, 45)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTelefone2Confirma)
+                    .addComponent(labelEstadoConfirma))
+                .addGap(48, 48, 48)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelEmailConfirma)
+                    .addComponent(labelPaisConfirma))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout panelConfirmacaoLayout = new javax.swing.GroupLayout(panelConfirmacao);
         panelConfirmacao.setLayout(panelConfirmacaoLayout);
         panelConfirmacaoLayout.setHorizontalGroup(
             panelConfirmacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConfirmacaoLayout.createSequentialGroup()
+            .addGroup(panelConfirmacaoLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(btnAntConfirmacao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 430, Short.MAX_VALUE)
-                .addComponent(btnConfirmacao)
-                .addGap(25, 25, 25))
+                .addGroup(panelConfirmacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelConfirmacaoLayout.createSequentialGroup()
+                        .addComponent(labelNomeConfirma)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelConfirmacaoLayout.createSequentialGroup()
+                        .addGroup(panelConfirmacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panelConfirmacaoLayout.createSequentialGroup()
+                                .addComponent(btnAntConfirmacao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnConfirmacao)))
+                        .addGap(25, 25, 25))))
         );
         panelConfirmacaoLayout.setVerticalGroup(
             panelConfirmacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConfirmacaoLayout.createSequentialGroup()
-                .addContainerGap(385, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
+                .addComponent(labelNomeConfirma)
+                .addGap(28, 28, 28)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelConfirmacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConfirmacao)
                     .addComponent(btnAntConfirmacao))
@@ -685,7 +804,12 @@ public class TelaCadastro extends javax.swing.JFrame {
         nome = fieldNome.getText();
         data_nasc = jDateChooser1.getDate();
         telefone1 = Integer.parseInt(fieldTelefone1.getText());
-        telefone2 = Integer.parseInt(fieldTelefone2.getText());
+        
+        if(fieldTelefone2.getText().isEmpty()){
+            telefone2 = 0;
+        }else{       
+            telefone2 = Integer.parseInt(fieldTelefone2.getText()); 
+        }
         email = fieldEmail.getText();
         
         Pessoa pessoa = new Pessoa();
@@ -696,16 +820,54 @@ public class TelaCadastro extends javax.swing.JFrame {
         pessoaCad.get(0).setTelefone1(telefone1);
         pessoaCad.get(0).setTelefone2(telefone2);
         pessoaCad.get(0).setEmail(email);
+                
+        String[] tratNome = pessoaCad.get(0).getNome().split(" ");
+        this.labelNomeConfirma.setText(tratNome[0] + ", confirme seus dados");
         
         tabbedPaneMenu.setSelectedIndex(2);
     }//GEN-LAST:event_btnProxCadDadosActionPerformed
 
     private void btnProxCadEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProxCadEnderecoActionPerformed
+        logradouro = fieldLogradouro.getText();
+        numero = Integer.parseInt(fieldNumero.getText());
+        cidade = fieldCidade.getText();
+        sigla_estado = fieldEstado.getText();
+        pais = fieldPais.getText();        
+                
         pessoaCad.get(0).setLogradouro(logradouro);
         pessoaCad.get(0).setNumero(numero);
         pessoaCad.get(0).setCidade(cidade);
         pessoaCad.get(0).setSigla_estado(sigla_estado);       
         pessoaCad.get(0).setPais(pais);
+        System.out.println(pessoaCad.get(0).getLogradouro());
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        
+        String nomeToString = pessoaCad.get(0).getNome();
+        String dataNascToString =  df.format(pessoaCad.get(0).getData_nasc());
+        String telefone1ToString = Integer.toString(pessoaCad.get(0).getTelefone1());
+        String telefone2ToString = Integer.toString(pessoaCad.get(0).getTelefone2());
+        String emailToString = pessoaCad.get(0).getEmail();
+        String logradouroToString = pessoaCad.get(0).getLogradouro();
+        String numeroToString = Integer.toString(pessoaCad.get(0).getNumero());
+        String cidadeToString = pessoaCad.get(0).getCidade();
+        String estadoToString = pessoaCad.get(0).getSigla_estado();
+        String paisToString = pessoaCad.get(0).getPais();
+        
+        this.labelNomeCompletoConfirma.setText("Nome: "+nomeToString);
+        this.labelDataNascConfirma.setText("Data de Nascimento: "+dataNascToString);
+        this.labelTelefone1Confirma.setText("Telefone 1: "+telefone1ToString);
+        if(!telefone2ToString.equals("0")){   
+            this.labelTelefone2Confirma.setText("Telefone 2: "+telefone2ToString);
+        }else{
+            this.labelTelefone2Confirma.setText("Telefone 2: Não informado");
+        }
+        this.labelEmailConfirma.setText("Email: "+emailToString);
+        
+        this.labelLogradouroConfirma.setText("Logradouro: "+logradouroToString);
+        this.labelNumeroConfirma.setText("Número: "+numeroToString);
+        this.labelCidadeConfirma.setText("Cidade: "+cidadeToString);
+        this.labelEstadoConfirma.setText("Estado: "+estadoToString);
+        this.labelPaisConfirma.setText("País: "+paisToString);
                 
         tabbedPaneMenu.setSelectedIndex(3);
     }//GEN-LAST:event_btnProxCadEnderecoActionPerformed
@@ -955,18 +1117,30 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel labelCidade;
+    private javax.swing.JLabel labelCidadeConfirma;
     private javax.swing.JLabel labelDataNasc;
+    private javax.swing.JLabel labelDataNascConfirma;
     private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelEmailConfirma;
     private javax.swing.JLabel labelEstado;
+    private javax.swing.JLabel labelEstadoConfirma;
     private javax.swing.JLabel labelLogradouro;
+    private javax.swing.JLabel labelLogradouroConfirma;
     private javax.swing.JLabel labelNome;
+    private javax.swing.JLabel labelNomeCompletoConfirma;
+    private javax.swing.JLabel labelNomeConfirma;
     private javax.swing.JLabel labelNumero;
+    private javax.swing.JLabel labelNumeroConfirma;
     private javax.swing.JLabel labelPais;
+    private javax.swing.JLabel labelPaisConfirma;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelSenhaConfirm;
     private javax.swing.JLabel labelTelefone1;
+    private javax.swing.JLabel labelTelefone1Confirma;
     private javax.swing.JLabel labelTelefone2;
+    private javax.swing.JLabel labelTelefone2Confirma;
     private javax.swing.JLabel labelUsuario;
     private javax.swing.JPanel panelBackground;
     private javax.swing.JPanel panelCadDados;
