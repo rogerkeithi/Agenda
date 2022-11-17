@@ -4,6 +4,7 @@
  */
 package com.roger.agenda;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +13,8 @@ import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.security.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -190,10 +193,18 @@ public class TelaLogin extends javax.swing.JFrame {
         String query = "SELECT  USUARIO, SENHA_PESSOA from tb_usuario WHERE USUARIO = ? AND SENHA_PESSOA = ?";
         PreparedStatement ps;
         ResultSet rs;
-        String usuario = fieldUsuario.getText();
-        char[] senha = fieldSenha.getPassword();
-        String senha_string = String.valueOf(senha);
+        String usuario = this.fieldUsuario.getText();
+
         try {
+            MessageDigest cryptSenha = MessageDigest.getInstance("SHA-256");
+            byte messageDigestSenha[] = cryptSenha.digest(String.valueOf(this.fieldSenha.getPassword()).getBytes("UTF-8"));
+
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : messageDigestSenha) {
+              hexString.append(String.format("%02X", 0xFF & b));
+            }
+            String senha_string = hexString.toString();
+            
             ConnectionFactory cf = new ConnectionFactory();
             con = cf.getConnection();
             con.setAutoCommit(false);
@@ -224,15 +235,20 @@ public class TelaLogin extends javax.swing.JFrame {
             }
 
             ps.close();
-
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(TelaCadastro.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnCadastreseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastreseActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        TelaCadastro telacadastro = new TelaCadastro();
+        telacadastro.setLocationRelativeTo(null);
+        telacadastro.setVisible(true);
     }//GEN-LAST:event_btnCadastreseActionPerformed
 
     /**

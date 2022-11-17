@@ -23,7 +23,7 @@ public class Cadastrar {
     public void CadastrarPessoa(){
         Connection con;
     
-        String query = "INSERT INTO tb_pessoa VALUES (default,?,?,?,?,?,null,null)";
+        String query = "INSERT INTO tb_pessoa VALUES (default,?,?,?,?,?,null,?)";
         PreparedStatement ps;
         
         java.sql.Date dataSql = new java.sql.Date(this.pessoa.get(0).getData_nasc().getTime());
@@ -38,6 +38,7 @@ public class Cadastrar {
             ps.setString(3, this.pessoa.get(0).getEmail());
             ps.setInt(4, this.pessoa.get(0).getTelefone1());
             ps.setInt(5, this.pessoa.get(0).getTelefone2());
+            ps.setInt(6, Integer.parseInt(ID_USUARIO_FK));
             ps.execute();
 
             con.commit();
@@ -68,7 +69,7 @@ public class Cadastrar {
             con.commit();
             ps.close();
 
-            JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso! Realize o login para continuar");
+            System.out.println("Cadastro de login feito com sucesso!");
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -97,57 +98,6 @@ public class Cadastrar {
             System.out.println(ID_USUARIO_FK);
             ps.close();
 
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-    }
-    
-    public void selectID_PESSOA(){
-        Connection con;
-        
-        String query = "SELECT ID_PESSOA FROM tb_pessoa WHERE USUARIO = ?";
-        PreparedStatement ps;
-        ResultSet rs;
-
-        try {
-            ConnectionFactory cf = new ConnectionFactory();
-            con = cf.getConnection();
-            con.setAutoCommit(false);
-            ps = con.prepareStatement(query);
-            ps.setString(1, this.login.get(0).getUsuario());
-            rs = ps.executeQuery();
-            con.commit();
-
-            while (rs.next()) {
-                ID_USUARIO_FK = rs.getString("ID_USUARIO");
-            }
-            System.out.println(ID_USUARIO_FK);
-            ps.close();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-    }
-    
-    public void atualizarID_USUARIO(){
-        Connection con;
-        
-        String query = "UPDATE tb_pessoa SET ID_USUARIO = ? WHERE ID_PESSOA = LAST_INSERT_ID()";
-
-        PreparedStatement ps;
-
-        try {
-            con = ConnectionFactory.getConnection();
-            con.setAutoCommit(false);
-
-            ps = con.prepareStatement(query);
-            ps.setInt(1, Integer.parseInt(ID_USUARIO_FK));
-            ps.execute();
-            con.commit();
-            ps.close();
-
-            JOptionPane.showMessageDialog(null, "Alteração feita com sucesso!");
-            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }

@@ -24,13 +24,9 @@ public class Agenda {
            // handle exception
         }
         
-        TelaCadastro tc = new TelaCadastro();
-        tc.setLocationRelativeTo(null);
-        tc.setVisible(true);
-        
-        //TelaLogin login = new TelaLogin();
-        //login.setLocationRelativeTo(null);
-        //login.setVisible(true);
+        TelaLogin telalogin = new TelaLogin();
+        telalogin.setLocationRelativeTo(null);
+        telalogin.setVisible(true);
         
     }
 }

@@ -45,6 +45,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        voltarLogin = new javax.swing.JButton();
         panelCadDados = new javax.swing.JPanel();
         btnProxCadDados = new javax.swing.JButton();
         btnAntCadDados = new javax.swing.JButton();
@@ -217,12 +218,21 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
+        voltarLogin.setText("Voltar para o Login");
+        voltarLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarLoginActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelCadLoginLayout = new javax.swing.GroupLayout(panelCadLogin);
         panelCadLogin.setLayout(panelCadLoginLayout);
         panelCadLoginLayout.setHorizontalGroup(
             panelCadLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadLoginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
+                .addComponent(voltarLogin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnProxCadLogin)
                 .addGap(25, 25, 25))
             .addGroup(panelCadLoginLayout.createSequentialGroup()
@@ -243,7 +253,9 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(btnProxCadLogin)
+                .addGroup(panelCadLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnProxCadLogin)
+                    .addComponent(voltarLogin))
                 .addGap(25, 25, 25))
         );
 
@@ -873,7 +885,25 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProxCadEnderecoActionPerformed
 
     private void btnConfirmacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmacaoActionPerformed
-        // TODO add your handling code here:
+        Cadastrar cad = new Cadastrar();
+        
+        cad.setUsuario(loginCad);
+        
+        cad.CadastrarUsuario();
+        
+        cad.selectID_USUARIO();
+        
+        cad.setPessoa(pessoaCad);
+        
+        cad.CadastrarPessoa();
+        
+        try { Thread.sleep (2000); } catch (InterruptedException ex) {}
+        
+        this.setVisible(false);
+        
+        TelaLogin telalogin = new TelaLogin();
+        telalogin.setLocationRelativeTo(null);
+        telalogin.setVisible(true);
     }//GEN-LAST:event_btnConfirmacaoActionPerformed
 
     private void btnAntCadDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntCadDadosActionPerformed
@@ -1027,6 +1057,13 @@ public class TelaCadastro extends javax.swing.JFrame {
        checkCamposEndereco();
     }//GEN-LAST:event_fieldPaisKeyReleased
 
+    private void voltarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarLoginActionPerformed
+       this.setVisible(false);
+       TelaLogin telalogin= new TelaLogin();
+       telalogin.setLocationRelativeTo(null);
+       telalogin.setVisible(true);
+    }//GEN-LAST:event_voltarLoginActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1150,5 +1187,6 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabbedPaneMenu;
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel titulo2;
+    private javax.swing.JButton voltarLogin;
     // End of variables declaration//GEN-END:variables
 }
