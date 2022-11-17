@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class Cadastrar {
+public class CadastrarUsuario {
     private static ArrayList<Pessoa> pessoa;
-    private static ArrayList<Login> login;
+    private static ArrayList<Usuario> login;
     private static String ID_USUARIO_FK;
     private static String ID_PESSOA_FK;
 
@@ -17,7 +17,7 @@ public class Cadastrar {
         this.pessoa = newPessoa;
     }
     
-    public void setUsuario(ArrayList<Login> newLogin){
+    public void setUsuario(ArrayList<Usuario> newLogin){
         this.login = newLogin;
     }
     

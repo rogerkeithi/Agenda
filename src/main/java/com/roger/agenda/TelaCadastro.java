@@ -17,7 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TelaCadastro extends javax.swing.JFrame {
-    ArrayList<Login> loginCad = new ArrayList<Login>(1);
+    ArrayList<Usuario> usuarioCad = new ArrayList<Usuario>(1);
     ArrayList<Pessoa> pessoaCad = new ArrayList<Pessoa>(1);
 
     public TelaCadastro() {
@@ -77,13 +77,13 @@ public class TelaCadastro extends javax.swing.JFrame {
         fieldLogradouro = new javax.swing.JTextField();
         fieldNumero = new javax.swing.JTextField();
         fieldCidade = new javax.swing.JTextField();
-        fieldEstado = new javax.swing.JTextField();
         fieldPais = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        comboBoxEstado = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         panelConfirmacao = new javax.swing.JPanel();
         btnConfirmacao = new javax.swing.JButton();
@@ -492,12 +492,6 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        fieldEstado.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                fieldEstadoKeyReleased(evt);
-            }
-        });
-
         fieldPais.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fieldPaisKeyReleased(evt);
@@ -519,6 +513,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 102, 102));
         jLabel15.setText("*");
 
+        comboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -536,7 +532,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                                 .addComponent(labelEstado)
                                 .addGap(7, 7, 7)
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(fieldEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(comboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldPais, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -591,9 +587,9 @@ public class TelaCadastro extends javax.swing.JFrame {
                         .addComponent(labelEstado)
                         .addComponent(jLabel14)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
@@ -804,9 +800,9 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void btnProxCadLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProxCadLoginActionPerformed
         usuario = fieldUsuario.getText();
         
-        Login login = new Login(this.usuario,this.senhahex);
+        Usuario login = new Usuario(this.usuario,this.senhahex);
         
-        loginCad.add(login);
+        usuarioCad.add(login);
         
         tabbedPaneMenu.setSelectedIndex(1);
         
@@ -843,7 +839,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         logradouro = fieldLogradouro.getText();
         numero = Integer.parseInt(fieldNumero.getText());
         cidade = fieldCidade.getText();
-        sigla_estado = fieldEstado.getText();
+        sigla_estado = comboBoxEstado.getSelectedItem().toString();
         pais = fieldPais.getText();        
                 
         pessoaCad.get(0).setLogradouro(logradouro);
@@ -885,9 +881,9 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProxCadEnderecoActionPerformed
 
     private void btnConfirmacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmacaoActionPerformed
-        Cadastrar cad = new Cadastrar();
+        CadastrarUsuario cad = new CadastrarUsuario();
         
-        cad.setUsuario(loginCad);
+        cad.setUsuario(usuarioCad);
         
         boolean checkUsuario = cad.CadastrarUsuario();
         
@@ -913,7 +909,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfirmacaoActionPerformed
 
     private void btnAntCadDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntCadDadosActionPerformed
-        loginCad.removeAll(loginCad);
+        usuarioCad.removeAll(usuarioCad);
         tabbedPaneMenu.setSelectedIndex(0);
     }//GEN-LAST:event_btnAntCadDadosActionPerformed
 
@@ -936,12 +932,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         if(!fieldLogradouro.getText().isEmpty()){
             if(!fieldNumero.getText().isEmpty()){
                 if(!fieldCidade.getText().isEmpty()){
-                    if(!fieldEstado.getText().isEmpty()){
-                        if(!fieldPais.getText().isEmpty()){
-                            this.btnProxCadEndereco.setEnabled(true);
-                        }else{
-                            this.btnProxCadEndereco.setEnabled(false);
-                        } 
+                    if(!fieldPais.getText().isEmpty()){
+                        this.btnProxCadEndereco.setEnabled(true);
                     }else{
                         this.btnProxCadEndereco.setEnabled(false);
                     } 
@@ -1055,10 +1047,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         checkCamposEndereco();
     }//GEN-LAST:event_fieldCidadeKeyReleased
 
-    private void fieldEstadoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldEstadoKeyReleased
-        checkCamposEndereco();
-    }//GEN-LAST:event_fieldEstadoKeyReleased
-
     private void fieldPaisKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldPaisKeyReleased
        checkCamposEndereco();
     }//GEN-LAST:event_fieldPaisKeyReleased
@@ -1129,9 +1117,9 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JButton btnProxCadDados;
     private javax.swing.JButton btnProxCadEndereco;
     private javax.swing.JButton btnProxCadLogin;
+    private javax.swing.JComboBox<String> comboBoxEstado;
     private javax.swing.JTextField fieldCidade;
     private javax.swing.JTextField fieldEmail;
-    private javax.swing.JTextField fieldEstado;
     private javax.swing.JTextField fieldLogradouro;
     private javax.swing.JTextField fieldNome;
     private javax.swing.JTextField fieldNumero;

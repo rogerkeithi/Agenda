@@ -4,6 +4,7 @@ import java.util.Date;
 import javax.swing.ImageIcon;
 
 public class Pessoa {
+    public static int id_pessoa;
     public static String nome;
     public static Date data_nasc; 
     public static String email;
@@ -40,6 +41,13 @@ public class Pessoa {
         this.pais = pais;
     }
     */
+    
+    public int getId_pessoa(){
+        return this.id_pessoa;
+    }
+    public void setId_pessoa(int id_pessoa){
+        this.id_pessoa = id_pessoa;
+    }
     
     //MÉTODOS GET DO OBJ. PESSOA
     public String getNome(){

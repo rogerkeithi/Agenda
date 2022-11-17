@@ -4,11 +4,11 @@
  */
 package com.roger.agenda;
 
-public class Login {
+public class Usuario {
     public static String usuario;
     public static String senha;
     
-    public Login(String usuario, String senha){
+    public Usuario(String usuario, String senha){
         this.usuario = usuario;
         this.senha = senha;
     }

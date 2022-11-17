@@ -190,7 +190,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldUsuarioActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        String query = "SELECT  USUARIO, SENHA_PESSOA from tb_usuario WHERE USUARIO = ? AND SENHA_PESSOA = ?";
+        String query = "SELECT  ID_USUARIO, USUARIO, SENHA_PESSOA from tb_usuario WHERE USUARIO = ? AND SENHA_PESSOA = ?";
         PreparedStatement ps;
         ResultSet rs;
         String usuario = this.fieldUsuario.getText();
@@ -214,21 +214,22 @@ public class TelaLogin extends javax.swing.JFrame {
             rs = ps.executeQuery();
             con.commit();
 
+            int idUsuario = 0;
             String usuarioBD = "";
             String senhaBD = "";
 
             while (rs.next()) {
+                idUsuario = rs.getInt("ID_USUARIO");
                 usuarioBD = rs.getString("USUARIO");
-                System.out.println(usuarioBD);
                 senhaBD = rs.getString("SENHA_PESSOA");
-                System.out.println(senhaBD);
                 
                 if(!senhaBD.equals(senha_string)){
                     labelErro.setText("Usuário ou senha inválidos");
                 }else{
-                    System.out.println("LOGOU");
+                    boolean logado = true;
                     this.setVisible(false);
                     Tela tela = new Tela();
+                    tela.setLogin(idUsuario, logado);
                     tela.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     tela.setVisible(true);
                 }   
