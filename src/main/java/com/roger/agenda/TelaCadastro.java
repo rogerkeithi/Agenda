@@ -889,21 +889,27 @@ public class TelaCadastro extends javax.swing.JFrame {
         
         cad.setUsuario(loginCad);
         
-        cad.CadastrarUsuario();
+        boolean checkUsuario = cad.CadastrarUsuario();
         
-        cad.selectID_USUARIO();
-        
-        cad.setPessoa(pessoaCad);
-        
-        cad.CadastrarPessoa();
-        
-        try { Thread.sleep (2000); } catch (InterruptedException ex) {}
-        
-        this.setVisible(false);
-        
-        TelaLogin telalogin = new TelaLogin();
-        telalogin.setLocationRelativeTo(null);
-        telalogin.setVisible(true);
+        if(checkUsuario == true){
+            cad.selectID_USUARIO();
+
+            cad.setPessoa(pessoaCad);
+
+            boolean checkPessoa = cad.CadastrarPessoa();
+
+            if(checkPessoa == true){
+                cad.selectID_PESSOA();
+                
+                cad.CadastrarEndereco();
+                
+                this.setVisible(false);
+
+                TelaLogin telalogin = new TelaLogin();
+                telalogin.setLocationRelativeTo(null);
+                telalogin.setVisible(true);
+            }
+        }
     }//GEN-LAST:event_btnConfirmacaoActionPerformed
 
     private void btnAntCadDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntCadDadosActionPerformed
