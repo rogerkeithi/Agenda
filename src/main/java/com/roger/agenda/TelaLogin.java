@@ -59,9 +59,9 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         labelTitulo.setBackground(new java.awt.Color(153, 0, 153));
-        labelTitulo.setFont(new java.awt.Font("Rockwell", 0, 24)); // NOI18N
+        labelTitulo.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 24)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        labelTitulo.setText("Bem vindo a sua agenda!");
+        labelTitulo.setText("Bem-vindo a sua agenda!");
 
         labelUsuario.setBackground(new java.awt.Color(51, 51, 51));
         labelUsuario.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
@@ -69,7 +69,7 @@ public class TelaLogin extends javax.swing.JFrame {
         labelUsuario.setText("USUÁRIO: ");
 
         fieldUsuario.setBackground(new java.awt.Color(51, 51, 51));
-        fieldUsuario.setFont(new java.awt.Font("Rockwell", 0, 12)); // NOI18N
+        fieldUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         fieldUsuario.setForeground(new java.awt.Color(255, 255, 255));
         fieldUsuario.setToolTipText("");
         fieldUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +84,7 @@ public class TelaLogin extends javax.swing.JFrame {
         labelSenha.setText("SENHA: ");
 
         fieldSenha.setBackground(new java.awt.Color(51, 51, 51));
+        fieldSenha.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 11)); // NOI18N
         fieldSenha.setForeground(new java.awt.Color(255, 255, 255));
 
         checkLembrardemim.setBackground(new java.awt.Color(51, 51, 51));
@@ -91,7 +92,7 @@ public class TelaLogin extends javax.swing.JFrame {
         checkLembrardemim.setText("Lembre de mim");
 
         btnEntrar.setBackground(new java.awt.Color(51, 51, 51));
-        btnEntrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEntrar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 11)); // NOI18N
         btnEntrar.setText("Entrar");
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +101,7 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         btnCadastrese.setBackground(new java.awt.Color(51, 51, 51));
-        btnCadastrese.setForeground(new java.awt.Color(0, 0, 0));
+        btnCadastrese.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 11)); // NOI18N
         btnCadastrese.setText("Cadastre-se");
         btnCadastrese.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +112,7 @@ public class TelaLogin extends javax.swing.JFrame {
         labelCadastrese.setBackground(new java.awt.Color(51, 51, 51));
         labelCadastrese.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         labelCadastrese.setForeground(new java.awt.Color(255, 255, 255));
-        labelCadastrese.setText("Ainda não tem uma conta?");
+        labelCadastrese.setText("Esqueceu a sua senha?");
 
         labelErro.setForeground(new java.awt.Color(255, 51, 51));
         labelErro.setText(".");
@@ -121,14 +122,10 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelErro, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCadastrese, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(labelTitulo)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +138,11 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(checkLembrardemim)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labelCadastrese))))
+                            .addComponent(labelCadastrese))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnCadastrese, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(60, 60, 60))
         );
         jPanel1Layout.setVerticalGroup(
@@ -157,15 +158,15 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSenha)
                     .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkLembrardemim)
-                    .addComponent(labelCadastrese))
+                    .addComponent(labelCadastrese)
+                    .addComponent(checkLembrardemim))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrese)
                     .addComponent(btnEntrar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelErro, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
