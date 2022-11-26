@@ -70,7 +70,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         labelEmail = new javax.swing.JLabel();
         fieldEmail = new javax.swing.JTextField();
         titulo2 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         panelCadEndereco = new javax.swing.JPanel();
         btnProxCadEndereco = new javax.swing.JButton();
         btnAntCadEndereco = new javax.swing.JButton();
@@ -131,13 +130,12 @@ public class TelaCadastro extends javax.swing.JFrame {
         setTitle("Cadastro");
         setResizable(false);
 
-        tabbedPaneMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(-2, -2, -2, -3));
+        tabbedPaneMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(-2, -2, -2, -2));
         tabbedPaneMenu.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         tabbedPaneMenu.setEnabled(false);
         tabbedPaneMenu.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
 
         panelCadLogin.setBackground(new java.awt.Color(51, 51, 51));
-        panelCadLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(-1, -1, -1, -1));
 
         btnProxCadLogin.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         btnProxCadLogin.setText("Próximo passo");
@@ -169,8 +167,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         labelSenhaConfirm.setText(" Confirme sua senha");
 
         fieldUsuario.setBackground(new java.awt.Color(51, 51, 51));
-        fieldUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        fieldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        fieldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         fieldUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fieldUsuarioKeyReleased(evt);
@@ -178,7 +175,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         fieldSenha.setBackground(new java.awt.Color(51, 51, 51));
-        fieldSenha.setForeground(new java.awt.Color(255, 255, 255));
         fieldSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         fieldSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +188,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         fieldSenhaConfirm.setBackground(new java.awt.Color(51, 51, 51));
-        fieldSenhaConfirm.setForeground(new java.awt.Color(255, 255, 255));
         fieldSenhaConfirm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fieldSenhaConfirmKeyReleased(evt);
@@ -317,8 +312,6 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         tabbedPaneMenu.addTab("Passo 1", panelCadLogin);
 
-        panelCadDados.setBackground(new java.awt.Color(51, 51, 51));
-
         btnProxCadDados.setText("Próximo passo");
         btnProxCadDados.setEnabled(false);
         btnProxCadDados.addActionListener(new java.awt.event.ActionListener() {
@@ -334,7 +327,6 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setPreferredSize(new java.awt.Dimension(324, 288));
 
@@ -458,15 +450,11 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         titulo2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         titulo2.setText("Informações Pessoais");
-
-        jLabel17.setIcon(ico);
-        jLabel17.setBorder(javax.swing.BorderFactory.createEmptyBorder(-2, -2, -2, -2));
-        jLabel17.setMaximumSize(new java.awt.Dimension(422, 241));
 
         javax.swing.GroupLayout panelCadDadosLayout = new javax.swing.GroupLayout(panelCadDados);
         panelCadDados.setLayout(panelCadDadosLayout);
@@ -479,28 +467,23 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addComponent(btnProxCadDados)
                 .addGap(25, 25, 25))
             .addGroup(panelCadDadosLayout.createSequentialGroup()
-                .addGap(0, 4, Short.MAX_VALUE)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panelCadDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelCadDadosLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(titulo2)
-                        .addContainerGap(320, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadDadosLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(239, 239, 239))))
+                        .addGap(263, 263, 263)
+                        .addComponent(titulo2))
+                    .addGroup(panelCadDadosLayout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelCadDadosLayout.setVerticalGroup(
             panelCadDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCadDadosLayout.createSequentialGroup()
-                .addGroup(panelCadDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelCadDadosLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(titulo2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(27, 27, 27)
+                .addComponent(titulo2)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55)
                 .addGroup(panelCadDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProxCadDados)
                     .addComponent(btnAntCadDados))
@@ -508,8 +491,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         );
 
         tabbedPaneMenu.addTab("Passo 2", panelCadDados);
-
-        panelCadEndereco.setBackground(new java.awt.Color(51, 51, 51));
 
         btnProxCadEndereco.setText("Próximo passo");
         btnProxCadEndereco.setEnabled(false);
@@ -526,7 +507,6 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setPreferredSize(new java.awt.Dimension(324, 288));
 
@@ -628,7 +608,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(fieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(fieldCidade))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -661,7 +641,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
@@ -704,8 +684,6 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         tabbedPaneMenu.addTab("Passo 3", panelCadEndereco);
 
-        panelConfirmacao.setBackground(new java.awt.Color(51, 51, 51));
-
         btnConfirmacao.setText("Confirmar meus dados");
         btnConfirmacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -723,7 +701,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         labelNomeConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         labelNomeConfirma.setText("NOME, confirme seus dados");
 
-        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         labelNomeCompletoConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
@@ -770,7 +747,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addComponent(labelTelefone1Confirma, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelTelefone2Confirma, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelDataNascConfirma))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1220,7 +1197,6 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
