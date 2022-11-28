@@ -24,7 +24,7 @@ public class CadastrarUsuario {
     public boolean CadastrarPessoa(){
         Connection con;
 
-        String query = "INSERT INTO tb_pessoa VALUES (default,?,?,?,?,?,null,?)";
+        String query = "INSERT INTO tb_pessoa VALUES (default,default,?,?,?,?,?,null,?)";
         PreparedStatement ps;
 
         java.sql.Date dataSql = new java.sql.Date(this.pessoa.get(0).getData_nasc().getTime());
@@ -37,8 +37,8 @@ public class CadastrarUsuario {
             ps.setString(1, this.pessoa.get(0).getNome());
             ps.setDate(2, dataSql);
             ps.setString(3, this.pessoa.get(0).getEmail());
-            ps.setInt(4, this.pessoa.get(0).getTelefone1());
-            ps.setInt(5, this.pessoa.get(0).getTelefone2());
+            ps.setLong(4, this.pessoa.get(0).getTelefone1());
+            ps.setLong(5, this.pessoa.get(0).getTelefone2());
             ps.setInt(6, Integer.parseInt(ID_USUARIO_FK));
             ps.execute();
 
@@ -86,7 +86,7 @@ public class CadastrarUsuario {
     public boolean CadastrarUsuario(){
         Connection con;
     
-        String query = "INSERT INTO tb_usuario VALUES (default,?,?)";
+        String query = "INSERT INTO tb_usuario VALUES (default,default,?,?)";
         PreparedStatement ps;
         
         try {

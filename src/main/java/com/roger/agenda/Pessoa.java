@@ -8,8 +8,8 @@ public class Pessoa {
     public static String nome;
     public static Date data_nasc; 
     public static String email;
-    public static int telefone1;
-    public static int telefone2;
+    public static long telefone1;
+    public static long telefone2;
     public static ImageIcon foto;
     
     public static String logradouro; 
@@ -59,10 +59,10 @@ public class Pessoa {
     public String getEmail(){
         return this.email;
     }
-    public int getTelefone1(){
+    public long getTelefone1(){
         return this.telefone1;
     }
-    public int getTelefone2(){
+    public long getTelefone2(){
         return this.telefone2;
     }
     public ImageIcon getFoto(){
@@ -105,10 +105,10 @@ public class Pessoa {
     public void setEmail(String email){
         this.email = email;
     }
-    public void setTelefone1(int telefone1){
+    public void setTelefone1(long telefone1){
         this.telefone1 = telefone1;
     }
-    public void setTelefone2(int telefone2){
+    public void setTelefone2(long telefone2){
         this.telefone2 = telefone2;
     }
     public void setFoto(ImageIcon foto){

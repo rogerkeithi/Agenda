@@ -21,9 +21,11 @@ import javax.swing.ImageIcon;
 public class TelaCadastro extends javax.swing.JFrame {
     ArrayList<Usuario> usuarioCad = new ArrayList<Usuario>(1);
     ArrayList<Pessoa> pessoaCad = new ArrayList<Pessoa>(1);
+    ImageIcon image = new ImageIcon("./util/calendar.png");  
 
     public TelaCadastro() {
         initComponents();
+        this.setIconImage(image.getImage());
     }
 
     @SuppressWarnings("unchecked")
@@ -130,15 +132,24 @@ public class TelaCadastro extends javax.swing.JFrame {
         setTitle("Cadastro");
         setResizable(false);
 
-        tabbedPaneMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(-2, -2, -2, -2));
+        tabbedPaneMenu.setBorder(javax.swing.BorderFactory.createEmptyBorder(-3, -3, -3, -3));
+        tabbedPaneMenu.setForeground(new java.awt.Color(255, 255, 255));
         tabbedPaneMenu.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        tabbedPaneMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tabbedPaneMenu.setEnabled(false);
+        tabbedPaneMenu.setForeground(new java.awt.Color(0, 0, 0));
         tabbedPaneMenu.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
 
         panelCadLogin.setBackground(new java.awt.Color(51, 51, 51));
+        panelCadLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(-3, -3, -3, -3));
+        panelCadLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        btnProxCadLogin.setBackground(new java.awt.Color(102, 102, 102));
         btnProxCadLogin.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        btnProxCadLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnProxCadLogin.setText("Próximo passo");
+        btnProxCadLogin.setBorderPainted(false);
+        btnProxCadLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProxCadLogin.setEnabled(false);
         btnProxCadLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,21 +163,26 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         labelUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         labelUsuario.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario.setText("Usuário");
+        labelUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         labelSenha.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         labelSenha.setForeground(new java.awt.Color(255, 255, 255));
         labelSenha.setText(" Senha");
+        labelSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         labelSenhaConfirm.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         labelSenhaConfirm.setForeground(new java.awt.Color(255, 255, 255));
         labelSenhaConfirm.setText(" Confirme sua senha");
+        labelSenhaConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         fieldUsuario.setBackground(new java.awt.Color(51, 51, 51));
+        fieldUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldUsuario.setForeground(new java.awt.Color(255, 255, 255));
         fieldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         fieldUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -175,6 +191,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         fieldSenha.setBackground(new java.awt.Color(51, 51, 51));
+        fieldSenha.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldSenha.setForeground(new java.awt.Color(255, 255, 255));
         fieldSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         fieldSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,6 +206,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         fieldSenhaConfirm.setBackground(new java.awt.Color(51, 51, 51));
+        fieldSenhaConfirm.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldSenhaConfirm.setForeground(new java.awt.Color(255, 255, 255));
         fieldSenhaConfirm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fieldSenhaConfirmKeyReleased(evt);
@@ -258,8 +278,12 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
+        voltarLogin.setBackground(new java.awt.Color(102, 102, 102));
         voltarLogin.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 11)); // NOI18N
+        voltarLogin.setForeground(new java.awt.Color(255, 255, 255));
         voltarLogin.setText("Voltar para o login");
+        voltarLogin.setBorderPainted(false);
+        voltarLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         voltarLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 voltarLoginActionPerformed(evt);
@@ -277,11 +301,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         panelCadLoginLayout.setHorizontalGroup(
             panelCadLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadLoginLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(25, 25, 25)
                 .addComponent(voltarLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnProxCadLogin)
-                .addGap(80, 80, 80))
+                .addGap(25, 25, 25))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadLoginLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -312,7 +336,14 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         tabbedPaneMenu.addTab("Passo 1", panelCadLogin);
 
+        panelCadDados.setBackground(new java.awt.Color(51, 51, 51));
+        panelCadDados.setBorder(javax.swing.BorderFactory.createEmptyBorder(-3, -3, -3, -3));
+
+        btnProxCadDados.setBackground(new java.awt.Color(102, 102, 102));
+        btnProxCadDados.setForeground(new java.awt.Color(255, 255, 255));
         btnProxCadDados.setText("Próximo passo");
+        btnProxCadDados.setBorderPainted(false);
+        btnProxCadDados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProxCadDados.setEnabled(false);
         btnProxCadDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,31 +351,49 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
+        btnAntCadDados.setBackground(new java.awt.Color(102, 102, 102));
+        btnAntCadDados.setForeground(new java.awt.Color(255, 255, 255));
         btnAntCadDados.setText("Voltar");
+        btnAntCadDados.setBorderPainted(false);
+        btnAntCadDados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAntCadDados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAntCadDadosActionPerformed(evt);
             }
         });
 
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setPreferredSize(new java.awt.Dimension(324, 288));
 
         labelNome.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelNome.setForeground(new java.awt.Color(255, 255, 255));
         labelNome.setText("Nome");
 
+        fieldNome.setBackground(new java.awt.Color(51, 51, 51));
+        fieldNome.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldNome.setForeground(new java.awt.Color(255, 255, 255));
         fieldNome.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fieldNomeKeyReleased(evt);
             }
         });
 
+        jDateChooser1.setBackground(new java.awt.Color(51, 51, 51));
+        jDateChooser1.setForeground(new java.awt.Color(0, 0, 0));
+        jDateChooser1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+
         labelDataNasc.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelDataNasc.setForeground(new java.awt.Color(255, 255, 255));
         labelDataNasc.setText("Data de Nascimento");
 
         labelTelefone1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelTelefone1.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefone1.setText("Telefone 1");
 
+        fieldTelefone1.setBackground(new java.awt.Color(51, 51, 51));
+        fieldTelefone1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldTelefone1.setForeground(new java.awt.Color(255, 255, 255));
         fieldTelefone1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fieldTelefone1KeyReleased(evt);
@@ -364,11 +413,20 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel10.setText("*");
 
         labelTelefone2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelTelefone2.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefone2.setText("Telefone 2");
 
+        fieldTelefone2.setBackground(new java.awt.Color(51, 51, 51));
+        fieldTelefone2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldTelefone2.setForeground(new java.awt.Color(255, 255, 255));
+
         labelEmail.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelEmail.setForeground(new java.awt.Color(255, 255, 255));
         labelEmail.setText("E-mail");
 
+        fieldEmail.setBackground(new java.awt.Color(51, 51, 51));
+        fieldEmail.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldEmail.setForeground(new java.awt.Color(255, 255, 255));
         fieldEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fieldEmailKeyReleased(evt);
@@ -450,7 +508,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         titulo2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
@@ -492,7 +550,14 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         tabbedPaneMenu.addTab("Passo 2", panelCadDados);
 
+        panelCadEndereco.setBackground(new java.awt.Color(51, 51, 51));
+        panelCadEndereco.setBorder(javax.swing.BorderFactory.createEmptyBorder(-3, -3, -3, -3));
+
+        btnProxCadEndereco.setBackground(new java.awt.Color(102, 102, 102));
+        btnProxCadEndereco.setForeground(new java.awt.Color(255, 255, 255));
         btnProxCadEndereco.setText("Próximo passo");
+        btnProxCadEndereco.setBorderPainted(false);
+        btnProxCadEndereco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProxCadEndereco.setEnabled(false);
         btnProxCadEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -500,49 +565,71 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
+        btnAntCadEndereco.setBackground(new java.awt.Color(102, 102, 102));
+        btnAntCadEndereco.setForeground(new java.awt.Color(255, 255, 255));
         btnAntCadEndereco.setText("Voltar");
+        btnAntCadEndereco.setBorderPainted(false);
+        btnAntCadEndereco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAntCadEndereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAntCadEnderecoActionPerformed(evt);
             }
         });
 
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel3.setPreferredSize(new java.awt.Dimension(324, 288));
 
         labelNumero.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelNumero.setForeground(new java.awt.Color(255, 255, 255));
         labelNumero.setText("Número");
 
         labelLogradouro.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelLogradouro.setForeground(new java.awt.Color(255, 255, 255));
         labelLogradouro.setText("Logradouro");
 
         labelEstado.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelEstado.setForeground(new java.awt.Color(255, 255, 255));
         labelEstado.setText("Estado");
 
         labelCidade.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelCidade.setForeground(new java.awt.Color(255, 255, 255));
         labelCidade.setText("Cidade");
 
         labelPais.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelPais.setForeground(new java.awt.Color(255, 255, 255));
         labelPais.setText("País");
 
+        fieldLogradouro.setBackground(new java.awt.Color(51, 51, 51));
+        fieldLogradouro.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldLogradouro.setForeground(new java.awt.Color(255, 255, 255));
         fieldLogradouro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fieldLogradouroKeyReleased(evt);
             }
         });
 
+        fieldNumero.setBackground(new java.awt.Color(51, 51, 51));
+        fieldNumero.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldNumero.setForeground(new java.awt.Color(255, 255, 255));
         fieldNumero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fieldNumeroKeyReleased(evt);
             }
         });
 
+        fieldCidade.setBackground(new java.awt.Color(51, 51, 51));
+        fieldCidade.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldCidade.setForeground(new java.awt.Color(255, 255, 255));
         fieldCidade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fieldCidadeKeyReleased(evt);
             }
         });
 
+        fieldPais.setBackground(new java.awt.Color(51, 51, 51));
+        fieldPais.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldPais.setForeground(new java.awt.Color(255, 255, 255));
         fieldPais.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 fieldPaisKeyReleased(evt);
@@ -564,7 +651,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 102, 102));
         jLabel15.setText("*");
 
+        comboBoxEstado.setBackground(new java.awt.Color(51, 51, 51));
+        comboBoxEstado.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        comboBoxEstado.setForeground(new java.awt.Color(0, 0, 0));
         comboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        comboBoxEstado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -608,7 +699,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(fieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(fieldCidade))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -641,7 +732,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
@@ -679,19 +770,30 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(panelCadEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProxCadEndereco)
                     .addComponent(btnAntCadEndereco))
-                .addGap(25, 25, 25))
+                .addGap(37, 37, 37))
         );
 
         tabbedPaneMenu.addTab("Passo 3", panelCadEndereco);
 
+        panelConfirmacao.setBackground(new java.awt.Color(51, 51, 51));
+        panelConfirmacao.setBorder(javax.swing.BorderFactory.createEmptyBorder(-3, -3, -3, -3));
+
+        btnConfirmacao.setBackground(new java.awt.Color(102, 102, 102));
+        btnConfirmacao.setForeground(new java.awt.Color(255, 255, 255));
         btnConfirmacao.setText("Confirmar meus dados");
+        btnConfirmacao.setBorderPainted(false);
+        btnConfirmacao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnConfirmacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmacaoActionPerformed(evt);
             }
         });
 
+        btnAntConfirmacao.setBackground(new java.awt.Color(102, 102, 102));
+        btnAntConfirmacao.setForeground(new java.awt.Color(255, 255, 255));
         btnAntConfirmacao.setText("Voltar");
+        btnAntConfirmacao.setBorderPainted(false);
+        btnAntConfirmacao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAntConfirmacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAntConfirmacaoActionPerformed(evt);
@@ -699,38 +801,50 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         labelNomeConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        labelNomeConfirma.setForeground(new java.awt.Color(255, 255, 255));
         labelNomeConfirma.setText("NOME, confirme seus dados");
 
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        labelNomeCompletoConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        labelNomeCompletoConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelNomeCompletoConfirma.setForeground(new java.awt.Color(255, 255, 255));
         labelNomeCompletoConfirma.setText("NOME: ...................................................................................");
 
-        labelLogradouroConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        labelLogradouroConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelLogradouroConfirma.setForeground(new java.awt.Color(255, 255, 255));
         labelLogradouroConfirma.setText("ENDEREÇO: ..................................................");
 
-        labelDataNascConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        labelDataNascConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelDataNascConfirma.setForeground(new java.awt.Color(255, 255, 255));
         labelDataNascConfirma.setText("DATA DE NASCIMENTO: .........................");
 
-        labelNumeroConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        labelNumeroConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelNumeroConfirma.setForeground(new java.awt.Color(255, 255, 255));
         labelNumeroConfirma.setText("NÚMERO: .........................................................");
 
-        labelTelefone1Confirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        labelTelefone1Confirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelTelefone1Confirma.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefone1Confirma.setText("TELEFONE PRINCIPAL: .............................................................................");
 
-        labelCidadeConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        labelCidadeConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelCidadeConfirma.setForeground(new java.awt.Color(255, 255, 255));
         labelCidadeConfirma.setText("CIDADE: .................................................................................");
 
-        labelTelefone2Confirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        labelTelefone2Confirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelTelefone2Confirma.setForeground(new java.awt.Color(255, 255, 255));
         labelTelefone2Confirma.setText("TELEFONE SECUNDÁRIO: .............................");
 
-        labelEstadoConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        labelEstadoConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelEstadoConfirma.setForeground(new java.awt.Color(255, 255, 255));
         labelEstadoConfirma.setText("ESTADO: ..............");
 
-        labelEmailConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        labelEmailConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelEmailConfirma.setForeground(new java.awt.Color(255, 255, 255));
         labelEmailConfirma.setText("E-MAIL: .............................................................................");
 
-        labelPaisConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        labelPaisConfirma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        labelPaisConfirma.setForeground(new java.awt.Color(255, 255, 255));
         labelPaisConfirma.setText("PAÍS: ..................");
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -747,23 +861,24 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addComponent(labelTelefone1Confirma, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelTelefone2Confirma, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelDataNascConfirma))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(labelEstadoConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelLogradouroConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                        .addComponent(labelCidadeConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(labelLogradouroConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelCidadeConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(labelNumeroConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(labelPaisConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58))
+                .addGap(40, 40, 40))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -786,10 +901,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelEmailConfirma)
                             .addComponent(labelPaisConfirma))
-                        .addGap(63, 63, 63))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54))))
+                        .addGap(71, 71, 71))))
         );
 
         javax.swing.GroupLayout panelConfirmacaoLayout = new javax.swing.GroupLayout(panelConfirmacao);
@@ -818,11 +930,11 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addComponent(labelNomeConfirma)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(panelConfirmacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConfirmacao)
                     .addComponent(btnAntConfirmacao))
-                .addGap(25, 25, 25))
+                .addGap(37, 37, 37))
         );
 
         tabbedPaneMenu.addTab("Confirmação", panelConfirmacao);
@@ -866,12 +978,12 @@ public class TelaCadastro extends javax.swing.JFrame {
     private void btnProxCadDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProxCadDadosActionPerformed
         nome = fieldNome.getText();
         data_nasc = jDateChooser1.getDate();
-        telefone1 = Integer.parseInt(fieldTelefone1.getText());
+        telefone1 = Long.parseLong(fieldTelefone1.getText());
         
         if(fieldTelefone2.getText().isEmpty()){
             telefone2 = 0;
         }else{       
-            telefone2 = Integer.parseInt(fieldTelefone2.getText()); 
+            telefone2 = Long.parseLong(fieldTelefone2.getText()); 
         }
         email = fieldEmail.getText();
         
@@ -907,8 +1019,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         
         String nomeToString = pessoaCad.get(0).getNome();
         String dataNascToString =  df.format(pessoaCad.get(0).getData_nasc());
-        String telefone1ToString = Integer.toString(pessoaCad.get(0).getTelefone1());
-        String telefone2ToString = Integer.toString(pessoaCad.get(0).getTelefone2());
+        String telefone1ToString = Long.toString(pessoaCad.get(0).getTelefone1());
+        String telefone2ToString = Long.toString(pessoaCad.get(0).getTelefone2());
         String emailToString = pessoaCad.get(0).getEmail();
         String logradouroToString = pessoaCad.get(0).getLogradouro();
         String numeroToString = Integer.toString(pessoaCad.get(0).getNumero());
@@ -958,6 +1070,11 @@ public class TelaCadastro extends javax.swing.JFrame {
 
                 TelaLogin telalogin = new TelaLogin();
                 telalogin.setLocationRelativeTo(null);
+                
+                ImageIcon image = new ImageIcon("./util/calendar.png"); 
+                
+                telalogin.setIconImage(image.getImage());
+                
                 telalogin.setVisible(true);
             }
         }
@@ -1110,6 +1227,11 @@ public class TelaCadastro extends javax.swing.JFrame {
        this.setVisible(false);
        TelaLogin telalogin= new TelaLogin();
        telalogin.setLocationRelativeTo(null);
+       
+       ImageIcon image = new ImageIcon("./util/calendar.png"); 
+                
+       telalogin.setIconImage(image.getImage());
+                
        telalogin.setVisible(true);
     }//GEN-LAST:event_voltarLoginActionPerformed
 
@@ -1155,8 +1277,8 @@ public class TelaCadastro extends javax.swing.JFrame {
     
     private String nome;
     private Date data_nasc;
-    private int telefone1;
-    private int telefone2;
+    private long telefone1;
+    private long telefone2;
     private String email;
     
     private String logradouro; 

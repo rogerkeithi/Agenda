@@ -35,8 +35,8 @@ public class BuscaPessoaBD {
                 pessoaInfos.get(0).setId_pessoa(rs.getInt("ID_PESSOA"));
                 pessoaInfos.get(0).setNome(rs.getString("NOME"));
                 pessoaInfos.get(0).setData_nasc(rs.getDate("DATA_NASC"));
-                pessoaInfos.get(0).setTelefone1(rs.getInt("TELEFONE1"));
-                pessoaInfos.get(0).setTelefone2(rs.getInt("TELEFONE2"));
+                pessoaInfos.get(0).setTelefone1(rs.getLong("TELEFONE1"));
+                pessoaInfos.get(0).setTelefone2(rs.getLong("TELEFONE2"));
                 pessoaInfos.get(0).setEmail(rs.getString("EMAIL"));
             }
             ps.close();

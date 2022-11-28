@@ -1,5 +1,6 @@
 package com.roger.agenda;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -28,5 +29,8 @@ public class Agenda {
         telalogin.setLocationRelativeTo(null);
         telalogin.setVisible(true);
         
+        ImageIcon image = new ImageIcon("./util/calendar.png");  
+        
+        telalogin.setIconImage(image.getImage());
     }
 }
