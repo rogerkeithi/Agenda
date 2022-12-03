@@ -151,11 +151,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel16" alignment="0" min="-2" pref="390" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="80" max="32767" attributes="0"/>
+                          <EmptySpace pref="90" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -423,18 +423,18 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="382" max="32767" attributes="0"/>
+                          <EmptySpace pref="406" max="32767" attributes="0"/>
                           <Component id="jPanel2" min="-2" pref="359" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                           <Component id="jPanel2" min="-2" pref="343" max="-2" attributes="0"/>
-                          <EmptySpace pref="72" max="32767" attributes="0"/>
+                          <EmptySpace pref="75" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -532,7 +532,7 @@
                                   <Component id="btnAntCadDados" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnProxCadDados" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="43" max="32767" attributes="0"/>
+                              <EmptySpace pref="44" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -747,9 +747,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="407" max="32767" attributes="0"/>
+                          <EmptySpace pref="406" max="32767" attributes="0"/>
                           <Component id="jPanel3" min="-2" pref="359" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -865,7 +865,7 @@
                                   <Component id="btnProxCadEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnAntCadEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="52" max="32767" attributes="0"/>
+                              <EmptySpace pref="53" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1160,10 +1160,7 @@
                                               <Component id="labelDataNascConfirma" alignment="0" min="-2" pref="382" max="-2" attributes="0"/>
                                               <Component id="labelEstadoConfirma" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="labelNomeConfirma" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace pref="150" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="labelNomeConfirma" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
                                   </Group>
@@ -1203,12 +1200,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="labelEstadoConfirma" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="labelPaisConfirma" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="btnConfirmacao" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnAntConfirmacao" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="labelPaisConfirma" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="46" max="32767" attributes="0"/>
                           </Group>
