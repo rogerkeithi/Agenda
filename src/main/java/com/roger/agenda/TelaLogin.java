@@ -50,26 +50,26 @@ public class TelaLogin extends javax.swing.JFrame {
         labelErro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Bem-Vindo!");
+        setTitle("Jenda");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(400, 352));
+        jPanel1.setPreferredSize(new java.awt.Dimension(374, 347));
 
         labelTitulo.setBackground(new java.awt.Color(153, 0, 153));
-        labelTitulo.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 1, 24)); // NOI18N
+        labelTitulo.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 24)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         labelTitulo.setText("Bem-vindo a sua agenda!");
 
         labelUsuario.setBackground(new java.awt.Color(51, 51, 51));
-        labelUsuario.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        labelUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         labelUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        labelUsuario.setText("USUÁRIO: ");
+        labelUsuario.setText("Usuário: ");
 
         fieldUsuario.setBackground(new java.awt.Color(51, 51, 51));
-        fieldUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldUsuario.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldUsuario.setForeground(new java.awt.Color(255, 255, 255));
         fieldUsuario.setToolTipText("Insira seu usuário");
         fieldUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -79,12 +79,12 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         labelSenha.setBackground(new java.awt.Color(51, 51, 51));
-        labelSenha.setFont(new java.awt.Font("Rockwell", 1, 12)); // NOI18N
+        labelSenha.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
         labelSenha.setForeground(new java.awt.Color(255, 255, 255));
-        labelSenha.setText("SENHA: ");
+        labelSenha.setText("Senha: ");
 
         fieldSenha.setBackground(new java.awt.Color(51, 51, 51));
-        fieldSenha.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldSenha.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldSenha.setForeground(new java.awt.Color(255, 255, 255));
         fieldSenha.setToolTipText("Insira sua senha");
 
@@ -92,8 +92,13 @@ public class TelaLogin extends javax.swing.JFrame {
         checkLembrardemim.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         checkLembrardemim.setForeground(new java.awt.Color(255, 255, 255));
         checkLembrardemim.setText("Lembre de mim");
+        checkLembrardemim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkLembrardemimActionPerformed(evt);
+            }
+        });
 
-        btnEntrar.setBackground(new java.awt.Color(102, 102, 102));
+        btnEntrar.setBackground(new java.awt.Color(0, 153, 204));
         btnEntrar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 11)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setText("Entrar");
@@ -118,7 +123,7 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         labelErro.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 10)); // NOI18N
-        labelErro.setForeground(new java.awt.Color(255, 51, 51));
+        labelErro.setForeground(new java.awt.Color(255, 0, 51));
         labelErro.setText(".");
         labelErro.setVisible(false);
 
@@ -127,60 +132,66 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(checkLembrardemim, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(labelTitulo)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelUsuario)
-                            .addComponent(labelSenha))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldUsuario)
-                            .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(60, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnCadastrese, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
+                        .addComponent(labelTitulo)
+                        .addGap(56, 56, 56))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelErro, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelUsuario)
+                                    .addComponent(labelSenha)
+                                    .addComponent(fieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelErro, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(checkLembrardemim)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnCadastrese, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(85, 85, 85))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(labelTitulo)
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelUsuario)
-                    .addComponent(fieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelSenha)
-                    .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(checkLembrardemim)
+                .addComponent(labelUsuario)
+                .addGap(9, 9, 9)
+                .addComponent(fieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelSenha)
+                .addGap(8, 8, 8)
+                .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkLembrardemim)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrese)
                     .addComponent(btnEntrar))
                 .addGap(18, 18, 18)
                 .addComponent(labelErro, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
         );
+
+        getAccessibleContext().setAccessibleName("Jenda");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -262,6 +273,10 @@ public class TelaLogin extends javax.swing.JFrame {
         telacadastro.setLocationRelativeTo(null);
         telacadastro.setVisible(true);
     }//GEN-LAST:event_btnCadastreseActionPerformed
+
+    private void checkLembrardemimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkLembrardemimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkLembrardemimActionPerformed
 
     /**
      * @param args the command line arguments
