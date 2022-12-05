@@ -4,6 +4,8 @@
  */
 package com.roger.agenda;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +17,9 @@ import javax.swing.JOptionPane;
 import java.security.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -61,7 +66,7 @@ public class TelaLogin extends javax.swing.JFrame {
         labelTitulo.setBackground(new java.awt.Color(153, 0, 153));
         labelTitulo.setFont(new java.awt.Font("Microsoft JhengHei UI Light", 0, 24)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
-        labelTitulo.setText("Bem-vindo a sua agenda!");
+        labelTitulo.setText("Bem-vindo à Jenda!");
 
         labelUsuario.setBackground(new java.awt.Color(51, 51, 51));
         labelUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 12)); // NOI18N
@@ -132,29 +137,25 @@ public class TelaLogin extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addContainerGap(90, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(labelTitulo)
-                        .addGap(56, 56, 56))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelUsuario)
+                            .addComponent(labelSenha)
+                            .addComponent(fieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelErro, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkLembrardemim)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelUsuario)
-                                    .addComponent(labelSenha)
-                                    .addComponent(fieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelErro, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(checkLembrardemim)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnCadastrese, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(85, 85, 85))))
+                                .addComponent(btnCadastrese, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(labelTitulo, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(85, 85, 85))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +178,7 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addComponent(btnEntrar))
                 .addGap(18, 18, 18)
                 .addComponent(labelErro, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -190,8 +191,6 @@ public class TelaLogin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
         );
-
-        getAccessibleContext().setAccessibleName("Jenda");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,6 +249,23 @@ public class TelaLogin extends javax.swing.JFrame {
                     tela.setLogin(idUsuario, logado);
                     tela.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     tela.setVisible(true);  
+                    
+                    DefaultTableCellRenderer MyCellRender = new DefaultTableCellRenderer();
+                    MyCellRender.setBackground(Color.decode("#FFFFFF"));
+                    MyCellRender.setForeground(Color.decode("#666666"));
+                    MyCellRender.setHorizontalAlignment( JLabel.CENTER );
+                    
+                    DefaultTableCellRenderer MyHeaderRender = new DefaultTableCellRenderer();
+                    MyHeaderRender.setBackground(Color.decode("#000000"));
+                    MyHeaderRender.setForeground(Color.decode("#FFFFFF"));
+                    MyHeaderRender.setHorizontalAlignment( JLabel.CENTER );
+                    
+                    tela.tabelContatos.getTableHeader().getColumnModel().getColumn(0).setHeaderRenderer(MyHeaderRender);
+                    tela.tabelContatos.getTableHeader().getColumnModel().getColumn(1).setHeaderRenderer(MyHeaderRender);
+                    tela.tabelContatos.getTableHeader().getColumnModel().getColumn(2).setHeaderRenderer(MyHeaderRender); 
+                    tela.tabelContatos.getTableHeader().getColumnModel().getColumn(3).setHeaderRenderer(MyHeaderRender);
+                    tela.tabelContatos.getTableHeader().getColumnModel().getColumn(4).setHeaderRenderer(MyHeaderRender);
+                    tela.tabelContatos.setDefaultRenderer(Object.class, MyCellRender);
                 }else{
                     this.labelErro.setVisible(true);
                     this.labelErro.setText("O usuario nao se encontra ativo");

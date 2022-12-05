@@ -1,5 +1,7 @@
 package com.roger.agenda;
 
+import java.awt.Image;
+import java.io.File;
 import java.util.Date;
 import javax.swing.ImageIcon;
 
@@ -10,7 +12,8 @@ public class Pessoa {
     public static String email;
     public static long telefone1;
     public static long telefone2;
-    public static ImageIcon foto;
+    public static File foto;
+    public static byte[] foto_banco;
     
     public static String logradouro; 
     public static int numero;
@@ -42,6 +45,13 @@ public class Pessoa {
     }
     */
     
+    public byte[] getFoto_banco(){
+        return this.foto_banco;
+    }
+    public void setFoto_banco(byte[] foto_banco){
+        this.foto_banco = foto_banco;
+    }
+    
     public int getId_pessoa(){
         return this.id_pessoa;
     }
@@ -65,7 +75,7 @@ public class Pessoa {
     public long getTelefone2(){
         return this.telefone2;
     }
-    public ImageIcon getFoto(){
+    public File getFoto(){
         return this.foto;
     }
     
@@ -111,7 +121,7 @@ public class Pessoa {
     public void setTelefone2(long telefone2){
         this.telefone2 = telefone2;
     }
-    public void setFoto(ImageIcon foto){
+    public void setFoto(File foto){
         this.foto = foto;
     }
     
