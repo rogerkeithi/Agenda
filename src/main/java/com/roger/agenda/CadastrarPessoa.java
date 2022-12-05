@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class CadastrarUsuario {
+public class CadastrarPessoa {
     private static ArrayList<Pessoa> pessoa;
     private static ArrayList<Usuario> login;
     private static ArrayList<Pessoa> pessoa_contato;
@@ -54,7 +54,7 @@ public class CadastrarUsuario {
 
             con.commit();
             ps.close();
-            con.close();
+
             System.out.println("Cadastro feito com sucesso! Realize o login para continuar");
             return true;
         } catch (SQLException ex) {
@@ -74,23 +74,24 @@ public class CadastrarUsuario {
             con.setAutoCommit(false);
 
             ps = con.prepareStatement(query);
-            ps.setString(1, this.pessoa.get(0).getLogradouro());
-            ps.setInt(2, this.pessoa.get(0).getNumero());
-            ps.setString(3, this.pessoa.get(0).getCidade());
-            ps.setString(4, this.pessoa.get(0).getSigla_estado());
-            ps.setString(5, this.pessoa.get(0).getPais());
+            ps.setString(1, this.pessoa_contato.get(0).getLogradouro());
+            ps.setInt(2, this.pessoa_contato.get(0).getNumero());
+            ps.setString(3, this.pessoa_contato.get(0).getCidade());
+            ps.setString(4, this.pessoa_contato.get(0).getSigla_estado());
+            ps.setString(5, this.pessoa_contato.get(0).getPais());
             ps.setInt(6, Integer.parseInt(ID_PESSOA_FK));
             ps.execute();
 
             con.commit();
             ps.close();
-            con.close();    
-            JOptionPane.showMessageDialog(null, "Cadastro feito com sucesso! Realize o login para continuar");
 
+            JOptionPane.showMessageDialog(null, "Contato Adicionado");
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
+    
     public void CadastrarEnderecoContato(){
         Connection con;
 
@@ -112,7 +113,8 @@ public class CadastrarUsuario {
 
             con.commit();
             ps.close();
-            con.close();
+
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -135,7 +137,7 @@ public class CadastrarUsuario {
 
             con.commit();
             ps.close();
-            con.close();    
+            
             System.out.println("Cadastro de login feito com sucesso!");
             return true;
             
@@ -166,7 +168,7 @@ public class CadastrarUsuario {
             }
             System.out.println(ID_USUARIO_FK);
             ps.close();
-            con.close();
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -193,7 +195,7 @@ public class CadastrarUsuario {
             }
             System.out.println(ID_PESSOA_FK);
             ps.close();
-            con.close();
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -217,7 +219,7 @@ public class CadastrarUsuario {
                 ID_PESSOA_FK_CONTATO = rs.getString("ID_PESSOA");
             }
             ps.close();
-            con.close();    
+
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -249,8 +251,7 @@ public class CadastrarUsuario {
 
             con.commit();
             ps.close();
-            con.close();
-            System.out.println("Contato adicionado com sucesso");
+
             selectID_PESSOA_CONTATO();
             CadastrarEnderecoContato();
             return true;
@@ -260,7 +261,7 @@ public class CadastrarUsuario {
         }
     }
     
-        public void ContatoPertenceUsuario(int ID_USUARIO) throws IOException{
+    public void ContatoPertenceUsuario(int ID_USUARIO) throws IOException{
         Connection con;
 
         String query = "INSERT INTO tb_contato_pertence VALUES (?,?)";
@@ -277,14 +278,14 @@ public class CadastrarUsuario {
 
             con.commit();
             ps.close();
-            con.close();
+
             JOptionPane.showMessageDialog(null, "Contato adicionado com sucesso");
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
     }
-        
+    
     public static byte[] getBytesFromFile(File file) throws IOException {
             InputStream is = new FileInputStream(file);
             long length = file.length();

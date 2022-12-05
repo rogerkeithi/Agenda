@@ -46,6 +46,7 @@ public class BuscaPessoaBD {
                 pessoaInfos.get(0).setEmail(rs.getString("EMAIL"));
             }
             ps.close();
+            con.close();
             setEnderecoPessoa();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -83,6 +84,7 @@ public class BuscaPessoaBD {
                 pessoaContato.get(0).setFoto_banco(rs.getBytes("FOTO"));
             }
             ps.close();
+            con.close();
             setEnderecoContato();
             return pessoaContato;
         } catch (SQLException ex) {
@@ -116,7 +118,7 @@ public class BuscaPessoaBD {
                 pessoaInfos.get(0).setPais(rs.getString("PAIS"));
             }
             ps.close();
-            
+            con.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
@@ -147,7 +149,7 @@ public class BuscaPessoaBD {
                 pessoaContato.get(0).setPais(rs.getString("PAIS"));
             }
             ps.close();
-            
+            con.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }

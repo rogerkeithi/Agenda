@@ -152,7 +152,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         labelSenhaConfirm.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         fieldUsuario.setBackground(new java.awt.Color(51, 51, 51));
-        fieldUsuario.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldUsuario.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldUsuario.setForeground(new java.awt.Color(255, 255, 255));
         fieldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         fieldUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +167,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         fieldSenha.setBackground(new java.awt.Color(51, 51, 51));
-        fieldSenha.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldSenha.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldSenha.setForeground(new java.awt.Color(255, 255, 255));
         fieldSenha.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         fieldSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +182,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         fieldSenhaConfirm.setBackground(new java.awt.Color(51, 51, 51));
-        fieldSenhaConfirm.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldSenhaConfirm.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldSenhaConfirm.setForeground(new java.awt.Color(255, 255, 255));
         fieldSenhaConfirm.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -245,7 +245,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(titulo)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,11 +257,11 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addComponent(labelSenhaConfirm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldSenhaConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(voltarLogin)
                     .addComponent(btnProxCadLogin))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         ImageIcon ico = new ImageIcon("background1.png");
@@ -275,9 +275,9 @@ public class TelaCadastro extends javax.swing.JFrame {
         panelCadLoginLayout.setHorizontalGroup(
             panelCadLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadLoginLayout.createSequentialGroup()
-                .addGap(0, 33, Short.MAX_VALUE)
-                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104)
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
         );
@@ -285,11 +285,13 @@ public class TelaCadastro extends javax.swing.JFrame {
             panelCadLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCadLoginLayout.createSequentialGroup()
                 .addGroup(panelCadLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelCadLoginLayout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelCadLoginLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         tabbedPaneMenu.addTab("Passo 1", panelCadLogin);
@@ -306,7 +308,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         labelNome.setText("Nome:");
 
         fieldNome.setBackground(new java.awt.Color(51, 51, 51));
-        fieldNome.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldNome.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldNome.setForeground(new java.awt.Color(255, 255, 255));
         fieldNome.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -326,7 +328,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         labelTelefone1.setText("Telefone 1: ");
 
         fieldTelefone1.setBackground(new java.awt.Color(51, 51, 51));
-        fieldTelefone1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldTelefone1.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldTelefone1.setForeground(new java.awt.Color(255, 255, 255));
         fieldTelefone1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -339,10 +341,10 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         labelTelefone2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         labelTelefone2.setForeground(new java.awt.Color(255, 255, 255));
-        labelTelefone2.setText("Telefone: 2");
+        labelTelefone2.setText("Telefone: 2:");
 
         fieldTelefone2.setBackground(new java.awt.Color(51, 51, 51));
-        fieldTelefone2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldTelefone2.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldTelefone2.setForeground(new java.awt.Color(255, 255, 255));
 
         labelEmail.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
@@ -350,7 +352,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         labelEmail.setText("E-mail:");
 
         fieldEmail.setBackground(new java.awt.Color(51, 51, 51));
-        fieldEmail.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldEmail.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldEmail.setForeground(new java.awt.Color(255, 255, 255));
         fieldEmail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -417,7 +419,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                             .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(labelEmail, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(fieldEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,11 +447,11 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addComponent(labelEmail)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAntCadDados)
                     .addComponent(btnProxCadDados))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelCadDadosLayout = new javax.swing.GroupLayout(panelCadDados);
@@ -457,8 +459,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         panelCadDadosLayout.setHorizontalGroup(
             panelCadDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadDadosLayout.createSequentialGroup()
-                .addContainerGap(406, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(410, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
         );
         panelCadDadosLayout.setVerticalGroup(
@@ -480,7 +482,7 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         labelNumero.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         labelNumero.setForeground(new java.awt.Color(255, 255, 255));
-        labelNumero.setText("Número");
+        labelNumero.setText("Número:");
 
         labelLogradouro.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         labelLogradouro.setForeground(new java.awt.Color(255, 255, 255));
@@ -492,14 +494,14 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         labelCidade.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         labelCidade.setForeground(new java.awt.Color(255, 255, 255));
-        labelCidade.setText("Cidade");
+        labelCidade.setText("Cidade:");
 
         labelPais.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         labelPais.setForeground(new java.awt.Color(255, 255, 255));
         labelPais.setText("País:");
 
         fieldLogradouro.setBackground(new java.awt.Color(51, 51, 51));
-        fieldLogradouro.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldLogradouro.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldLogradouro.setForeground(new java.awt.Color(255, 255, 255));
         fieldLogradouro.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -508,7 +510,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         fieldNumero.setBackground(new java.awt.Color(51, 51, 51));
-        fieldNumero.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldNumero.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldNumero.setForeground(new java.awt.Color(255, 255, 255));
         fieldNumero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -517,7 +519,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         fieldCidade.setBackground(new java.awt.Color(51, 51, 51));
-        fieldCidade.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldCidade.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldCidade.setForeground(new java.awt.Color(255, 255, 255));
         fieldCidade.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -526,7 +528,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         fieldPais.setBackground(new java.awt.Color(51, 51, 51));
-        fieldPais.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        fieldPais.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 14)); // NOI18N
         fieldPais.setForeground(new java.awt.Color(255, 255, 255));
         fieldPais.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -535,7 +537,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         });
 
         comboBoxEstado.setBackground(new java.awt.Color(51, 51, 51));
-        comboBoxEstado.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        comboBoxEstado.setFont(new java.awt.Font("Microsoft YaHei Light", 0, 14)); // NOI18N
         comboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         comboBoxEstado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -571,38 +573,37 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(46, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(41, 41, 41))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnAntCadEndereco, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(comboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(12, 12, 12))
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(labelEstado)
-                                    .addGap(40, 40, 40)))
-                            .addComponent(labelPais)
-                            .addGap(110, 110, 110)))
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(fieldPais, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(fieldCidade, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelLogradouro)
-                                    .addComponent(fieldLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelCidade))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelNumero))))
-                        .addComponent(btnProxCadEndereco)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAntCadEndereco, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(labelEstado)
+                                .addGap(40, 40, 40)
+                                .addComponent(labelPais)
+                                .addGap(110, 110, 110)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(fieldCidade, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(labelLogradouro)
+                                        .addComponent(fieldLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelCidade))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(fieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(labelNumero))))
+                            .addComponent(btnProxCadEndereco)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(comboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(fieldPais, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -630,11 +631,11 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fieldPais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProxCadEndereco)
                     .addComponent(btnAntCadEndereco))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelCadEnderecoLayout = new javax.swing.GroupLayout(panelCadEndereco);
@@ -642,8 +643,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         panelCadEnderecoLayout.setHorizontalGroup(
             panelCadEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCadEnderecoLayout.createSequentialGroup()
-                .addContainerGap(406, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(413, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
         );
         panelCadEnderecoLayout.setVerticalGroup(
