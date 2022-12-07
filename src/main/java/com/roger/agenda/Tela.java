@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -48,7 +49,9 @@ public class Tela extends javax.swing.JFrame {
     private static ArrayList<Pessoa> pessoa_contato_selecionada = new ArrayList<Pessoa>(0);
     
     private static Image fotoPerfilContatoToSave;
-    private static File fileFoto;
+    private static File fileFoto = new File("background.png");
+    
+    private static int id_compromisso_now;
     
     private String nome_contato;
     private Date data_nasc_contato;
@@ -70,6 +73,9 @@ public class Tela extends javax.swing.JFrame {
     }
 
     public void setLogin(int id_usuario, boolean logado_confirm){
+        ImageIcon image = new ImageIcon("./util/calendar.png");  
+
+        this.setIconImage(image.getImage());
         this.idUsuario = id_usuario;
         this.logado = logado_confirm;
         
@@ -81,7 +87,65 @@ public class Tela extends javax.swing.JFrame {
         
         this.jLabel3.setText("Olá, "+pessoa_infos.get(0).getNome()+", bem-vindo(a) de volta!");
         buscarTabela();
+        
+        listaInicio();
     }
+    
+    public void listaInicio(){
+        
+        Connection con;
+        
+        String query = "SELECT * FROM tb_compromisso WHERE ID_USUARIO = ? AND DATA_INICIO = ?";
+        PreparedStatement ps;
+        ResultSet rs;
+        String titulo = "";
+        String descricao = "";
+        String local = "";
+        String dataInicio = "";
+        String dataFim = "";
+        String hInicio = "";
+        String hFim = "";
+        try {
+            ConnectionFactory cf = new ConnectionFactory();
+            con = cf.getConnection();
+            con.setAutoCommit(false);
+            ps = con.prepareStatement(query);
+            ps.setInt(1, idUsuario);
+            ps.setDate(2, dataSql);
+            rs = ps.executeQuery();
+            
+            con.commit();
+            
+            
+            while (rs.next()) {
+                id_compromisso_now = rs.getInt("ID_COMPROMISSO");
+                titulo = rs.getString("TITULO");
+                descricao = rs.getString("DESCRICAO");
+                local = rs.getString("LOCAL_COMPROMISSO");
+                dataInicio = rs.getString("DATA_INICIO");
+                dataFim = rs.getString("DATA_FINAL");
+                hInicio = rs.getString("HORARIO_INICIO");
+                hFim = rs.getString("HORARIO_FINAL");
+                
+                String id_comp = String.valueOf(id_compromisso_now);
+                
+                String[] objs = {titulo,dataInicio,dataFim,hInicio,hFim,id_comp};
+
+                DefaultTableModel model3 = (DefaultTableModel) tabelCompromisso.getModel();
+
+                model3.addRow(objs);
+                
+                
+                
+                
+            }
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+    }
+    
     public void buscarTabela(){
     
         Connection con;
@@ -132,19 +196,31 @@ public class Tela extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pperfil = new javax.swing.JTabbedPane();
+        tabbedPrincipal = new javax.swing.JTabbedPane();
         pinicio = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jCalendar1 = new com.toedter.calendar.JCalendar();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tabelCompromisso = new javax.swing.JTable();
+        jButton7 = new javax.swing.JButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel59 = new javax.swing.JLabel();
+        jLabel54 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jLabel46 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         titulocompromisso = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
@@ -228,8 +304,6 @@ public class Tela extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         btnSalvarAdicionarContato = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        fieldLogradouroContato = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         comboBoxSiglaEstado = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
@@ -238,6 +312,8 @@ public class Tela extends javax.swing.JFrame {
         fieldCidadeContato = new javax.swing.JTextField();
         fieldPaisContato = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        fieldLogradouroContato = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         showFotoPerfilContato2 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -271,19 +347,23 @@ public class Tela extends javax.swing.JFrame {
         tfAlteraNome = new javax.swing.JTextField();
         btnSalvarAlteracoesContato = new javax.swing.JButton();
         btnExcluirContato = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        Logout = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Jenda");
         setBackground(new java.awt.Color(38, 34, 26));
         setMinimumSize(new java.awt.Dimension(640, 480));
 
-        pperfil.setBackground(new java.awt.Color(51, 51, 51));
-        pperfil.setBorder(javax.swing.BorderFactory.createEmptyBorder(-3, -3, -3, -3));
-        pperfil.setToolTipText("");
-        pperfil.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 18)); // NOI18N
-        pperfil.setMinimumSize(new java.awt.Dimension(100, 200));
+        tabbedPrincipal.setBackground(new java.awt.Color(51, 51, 51));
+        tabbedPrincipal.setBorder(javax.swing.BorderFactory.createEmptyBorder(-3, -3, -3, -3));
+        tabbedPrincipal.setToolTipText("");
+        tabbedPrincipal.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 18)); // NOI18N
+        tabbedPrincipal.setMinimumSize(new java.awt.Dimension(100, 200));
+        tabbedPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tabbedPrincipalMouseReleased(evt);
+            }
+        });
 
         pinicio.setBackground(new java.awt.Color(51, 51, 51));
         pinicio.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 1, 1, 1));
@@ -306,14 +386,6 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
-        jList1.setBackground(new java.awt.Color(242, 242, 242));
-        jList1.setBorder(null);
-        jList1.setForeground(new java.awt.Color(255, 255, 255));
-        jList1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jList1.setFixedCellHeight(100);
-        jList1.setPreferredSize(new java.awt.Dimension(39, 2440));
-        jScrollPane1.setViewportView(jList1);
-
         jButton1.setBackground(new java.awt.Color(0, 153, 255));
         jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -326,6 +398,46 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
+        tabelCompromisso.setAutoCreateRowSorter(true);
+        tabelCompromisso.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 18)); // NOI18N
+        tabelCompromisso.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Título", "Data Início", "Data Final", "Horario Início", "Horário Final", ""
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tabelCompromisso.setGridColor(new java.awt.Color(51, 51, 51));
+        tabelCompromisso.setRowHeight(40);
+        tabelCompromisso.setRowMargin(10);
+        tabelCompromisso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tabelCompromissoMouseReleased(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tabelCompromisso);
+
+        jButton7.setBackground(new java.awt.Color(0, 153, 255));
+        jButton7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setText("Atualizar");
+        jButton7.setBorder(javax.swing.BorderFactory.createEmptyBorder(-1, -1, -1, -1));
+        jButton7.setBorderPainted(false);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -333,9 +445,12 @@ public class Tela extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
@@ -343,10 +458,12 @@ public class Tela extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
 
@@ -386,12 +503,12 @@ public class Tela extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(338, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
@@ -400,13 +517,107 @@ public class Tela extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
         );
 
+        jPanel11.setMinimumSize(new java.awt.Dimension(300, 100));
+
+        jLabel49.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel49.setFont(new java.awt.Font("Microsoft YaHei UI Light", 1, 18)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(51, 51, 51));
+
+        jLabel51.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel51.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel51.setForeground(new java.awt.Color(51, 51, 51));
+
+        jLabel53.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel53.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 18)); // NOI18N
+        jLabel53.setForeground(new java.awt.Color(51, 51, 51));
+
+        jLabel55.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel55.setFont(new java.awt.Font("Microsoft YaHei UI Light", 1, 18)); // NOI18N
+        jLabel55.setForeground(new java.awt.Color(51, 51, 51));
+
+        jLabel58.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel58.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 18)); // NOI18N
+        jLabel58.setForeground(new java.awt.Color(51, 51, 51));
+
+        jLabel59.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel59.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 18)); // NOI18N
+        jLabel59.setForeground(new java.awt.Color(51, 51, 51));
+
+        jLabel54.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel54.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 18)); // NOI18N
+        jLabel54.setForeground(new java.awt.Color(51, 51, 51));
+
+        jList1.setVisible(false);
+        jScrollPane1.setViewportView(jList1);
+
+        jLabel46.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel46.setText("Participantes:");
+        jLabel46.setVisible(false);
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel49, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel51)
+                                    .addComponent(jLabel55, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel11Layout.createSequentialGroup()
+                                        .addGap(39, 39, 39)
+                                        .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(42, 42, 42)
+                                        .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(64, 64, 64))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(jLabel58)
+                                .addGap(149, 149, 149)
+                                .addComponent(jLabel59))
+                            .addComponent(jLabel46)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel51)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel55)
+                .addGap(61, 61, 61)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel58)
+                    .addComponent(jLabel59))
+                .addGap(157, 157, 157)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel53)
+                    .addComponent(jLabel54))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(jLabel46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(21, 21, 21))
         );
         jPanel3Layout.setVerticalGroup(
@@ -414,7 +625,9 @@ public class Tela extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(783, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("", jPanel3);
@@ -445,7 +658,6 @@ public class Tela extends javax.swing.JFrame {
         jLabel36.setText(".");
 
         jTextArea1.setColumns(20);
-        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
         jScrollPane3.setViewportView(jTextArea1);
 
@@ -461,17 +673,23 @@ public class Tela extends javax.swing.JFrame {
 
         dcAlteraData1.setBackground(new java.awt.Color(51, 51, 51));
         dcAlteraData1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        dcAlteraData1.setMaxSelectableDate(new java.util.Date(4131662490000L));
+        dcAlteraData1.setMinSelectableDate(new java.util.Date(-2208974310000L));
 
         jLabel39.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 255, 255));
         jLabel39.setText("Data final do compromisso:");
 
+        horaInicio.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         horaInicio.setText("00");
 
+        minInicio.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         minInicio.setText("00");
 
+        horaFim.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         horaFim.setText("00");
 
+        minFim.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         minFim.setText("00");
 
         jLabel40.setText(":");
@@ -499,8 +717,7 @@ public class Tela extends javax.swing.JFrame {
         });
 
         tabelContatosCompromisso.setAutoCreateRowSorter(true);
-        tabelContatosCompromisso.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        tabelContatosCompromisso.setForeground(new java.awt.Color(0, 0, 0));
+        tabelContatosCompromisso.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         tabelContatosCompromisso.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -540,44 +757,50 @@ public class Tela extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jLabel45))
-                    .addComponent(jLabel44)
-                    .addComponent(dcAlteraData1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel42)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(horaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(minInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel43)
+                                .addGap(133, 133, 133)
+                                .addComponent(jLabel45))
+                            .addComponent(jLabel44)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(57, 57, 57)
-                                .addComponent(horaFim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel35)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(minFim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane3)
-                        .addComponent(titulocompromisso, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(jLabel35)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel36))
-                        .addComponent(jLabel37)
-                        .addComponent(jLabel38)
-                        .addComponent(jTextField3))
-                    .addComponent(jLabel39)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                                .addComponent(jLabel36))
+                            .addComponent(jLabel37)
+                            .addComponent(jLabel38))
+                        .addGap(421, 421, 421))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(dcAlteraData1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel42)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(54, 54, 54)
+                                        .addComponent(horaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(minInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel43)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(57, 57, 57)
+                                        .addComponent(horaFim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(minFim, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(titulocompromisso, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(27, 27, 27))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -597,26 +820,28 @@ public class Tela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
-                .addComponent(jLabel39)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(dcAlteraData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel42)
-                    .addComponent(jLabel43))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(horaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(minInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(horaFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel40)
-                    .addComponent(jLabel41)
-                    .addComponent(minFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel39)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dcAlteraData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel42)
+                            .addComponent(jLabel43))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(horaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(minInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(horaFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel40)
+                            .addComponent(jLabel41)
+                            .addComponent(minFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(52, 52, 52)
                 .addComponent(jLabel44)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel45)
                 .addGap(48, 48, 48)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -645,7 +870,7 @@ public class Tela extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pperfil.addTab("  Inicio  ", pinicio);
+        tabbedPrincipal.addTab("  Inicio  ", pinicio);
 
         pcontatos.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -730,7 +955,7 @@ public class Tela extends javax.swing.JFrame {
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
                     .addGroup(paneListarContatoLayout.createSequentialGroup()
                         .addComponent(jTextField2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -762,11 +987,13 @@ public class Tela extends javax.swing.JFrame {
 
         tituloAdicionarContato.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 36)); // NOI18N
         tituloAdicionarContato.setForeground(new java.awt.Color(255, 255, 255));
-        tituloAdicionarContato.setText("Adicionar Contato");
+        tituloAdicionarContato.setText("Adicionar contato");
 
-        labelFoto.setBackground(new java.awt.Color(0, 0, 0));
+        labelFoto.setBackground(new java.awt.Color(204, 204, 204));
+        labelFoto.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         labelFoto.setForeground(new java.awt.Color(255, 255, 255));
-        labelFoto.setText("Selecionar foto...");
+        labelFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelFoto.setText("Selecionar foto");
         labelFoto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         labelFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         labelFoto.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -786,29 +1013,29 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nome:");
 
         fieldNomeContato.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Data de Nascimento");
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("E-mail:");
 
         fieldEmailContato.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Telefone 1:");
 
         fieldTelefone1Contato.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 24)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Telefone 2:");
 
@@ -816,77 +1043,77 @@ public class Tela extends javax.swing.JFrame {
 
         jDateChooser1.setBackground(new java.awt.Color(51, 51, 51));
         jDateChooser1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jDateChooser1.setMaxSelectableDate(new java.util.Date(1670212891000L));
+        jDateChooser1.setMinSelectableDate(new java.util.Date(-2208974309000L));
 
         javax.swing.GroupLayout panelAdicionarContatoLayout = new javax.swing.GroupLayout(panelAdicionarContato);
         panelAdicionarContato.setLayout(panelAdicionarContatoLayout);
         panelAdicionarContatoLayout.setHorizontalGroup(
             panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAdicionarContatoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAdicionarContatoLayout.createSequentialGroup()
-                        .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelAdicionarContatoLayout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldEmailContato))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelAdicionarContatoLayout.createSequentialGroup()
-                                .addComponent(labelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(panelAdicionarContatoLayout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(fieldNomeContato))
-                                    .addGroup(panelAdicionarContatoLayout.createSequentialGroup()
-                                        .addGap(37, 37, 37)
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelAdicionarContatoLayout.createSequentialGroup()
-                                .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fieldTelefone1Contato)
-                                    .addComponent(fieldTelefone2Contato))))
-                        .addGap(21, 21, 21))
                     .addGroup(panelAdicionarContatoLayout.createSequentialGroup()
-                        .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(39, 39, 39)
+                        .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tituloAdicionarContato)
-                            .addComponent(btnVoltarAdicionarContato))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(panelAdicionarContatoLayout.createSequentialGroup()
+                                .addComponent(labelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(panelAdicionarContatoLayout.createSequentialGroup()
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(fieldEmailContato, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(panelAdicionarContatoLayout.createSequentialGroup()
+                                            .addComponent(jLabel6)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(panelAdicionarContatoLayout.createSequentialGroup()
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(fieldNomeContato, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(panelAdicionarContatoLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fieldTelefone1Contato, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fieldTelefone2Contato))))
+                    .addComponent(btnVoltarAdicionarContato))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         panelAdicionarContatoLayout.setVerticalGroup(
             panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAdicionarContatoLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(33, 33, 33)
                 .addComponent(tituloAdicionarContato)
-                .addGap(41, 41, 41)
-                .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(labelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelAdicionarContatoLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(labelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelAdicionarContatoLayout.createSequentialGroup()
+                        .addGap(63, 63, 63)
                         .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(fieldNomeContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(31, 31, 31)
                         .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(122, 122, 122)
-                .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(fieldEmailContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fieldEmailContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))))
+                .addGap(29, 29, 29)
                 .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(fieldTelefone1Contato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(124, 124, 124)
-                .addGroup(panelAdicionarContatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldTelefone1Contato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(fieldTelefone2Contato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(100, 100, 100)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 524, Short.MAX_VALUE)
                 .addComponent(btnVoltarAdicionarContato, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82))
         );
@@ -912,27 +1139,17 @@ public class Tela extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Idade:");
 
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("E-mail:");
-
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jSeparator3.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel17.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Telefone 1:");
 
-        jSeparator4.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Telefone 2:");
-
-        jSeparator5.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel19.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
@@ -946,25 +1163,17 @@ public class Tela extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Número:");
 
-        jSeparator6.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel22.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Cidade:");
-
-        jSeparator7.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel23.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Estado:");
 
-        jSeparator8.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel24.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("País:");
-
-        jSeparator9.setBackground(new java.awt.Color(255, 255, 255));
 
         showLogradouroContato.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         showLogradouroContato.setForeground(new java.awt.Color(255, 255, 255));
@@ -1164,13 +1373,7 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Logradouro:");
-
-        fieldLogradouroContato.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Estado:");
 
@@ -1179,83 +1382,96 @@ public class Tela extends javax.swing.JFrame {
         comboBoxSiglaEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         comboBoxSiglaEstado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 24)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Número:");
 
         fieldNumeroContato.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 24)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Cidade:");
 
         fieldCidadeContato.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        fieldCidadeContato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldCidadeContatoActionPerformed(evt);
+            }
+        });
 
         fieldPaisContato.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
 
-        jLabel14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 24)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("País:");
+
+        jLabel10.setFont(new java.awt.Font("Microsoft YaHei UI Light", 0, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Logradouro:");
+
+        fieldLogradouroContato.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalvarAdicionarContato))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboBoxSiglaEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldLogradouroContato, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(fieldNumeroContato, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldCidadeContato, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(fieldLogradouroContato, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldPaisContato, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 19, Short.MAX_VALUE)))
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel11)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fieldCidadeContato, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboBoxSiglaEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 187, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18)
+                .addComponent(fieldPaisContato, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addGap(141, 141, 141)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(fieldLogradouroContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(129, 129, 129)
+                .addGap(57, 57, 57)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(fieldNumeroContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(129, 129, 129)
+                .addGap(58, 58, 58)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(fieldCidadeContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(122, 122, 122)
+                .addGap(62, 62, 62)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(comboBoxSiglaEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(fieldPaisContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(100, 100, 100)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 362, Short.MAX_VALUE)
                 .addComponent(btnSalvarAdicionarContato, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(82, 82, 82))
         );
@@ -1277,21 +1493,13 @@ public class Tela extends javax.swing.JFrame {
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
         jLabel26.setText("E-mail:");
 
-        jSeparator10.setBackground(new java.awt.Color(255, 255, 255));
-
-        jSeparator11.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel27.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Telefone 1:");
 
-        jSeparator12.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel28.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Telefone 2:");
-
-        jSeparator13.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel29.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
@@ -1301,31 +1509,21 @@ public class Tela extends javax.swing.JFrame {
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
         jLabel30.setText("Logradouro:");
 
-        jSeparator14.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel31.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("Número:");
-
-        jSeparator15.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel32.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setText("Cidade:");
 
-        jSeparator16.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel33.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(255, 255, 255));
         jLabel33.setText("Estado:");
 
-        jSeparator17.setBackground(new java.awt.Color(255, 255, 255));
-
         jLabel34.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("País:");
-
-        jSeparator18.setBackground(new java.awt.Color(255, 255, 255));
 
         dcAlteraData.setBackground(new java.awt.Color(51, 51, 51));
         dcAlteraData.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
@@ -1522,45 +1720,32 @@ public class Tela extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pperfil.addTab("Contatos", pcontatos);
+        tabbedPrincipal.addTab("Contatos", pcontatos);
 
-        jPanel5.setBackground(new java.awt.Color(51, 51, 51));
+        Logout.setBackground(new java.awt.Color(51, 51, 51));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1369, Short.MAX_VALUE)
+        javax.swing.GroupLayout LogoutLayout = new javax.swing.GroupLayout(Logout);
+        Logout.setLayout(LogoutLayout);
+        LogoutLayout.setHorizontalGroup(
+            LogoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1401, Short.MAX_VALUE)
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1018, Short.MAX_VALUE)
-        );
-
-        pperfil.addTab("Grupos", jPanel5);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1369, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1018, Short.MAX_VALUE)
+        LogoutLayout.setVerticalGroup(
+            LogoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1064, Short.MAX_VALUE)
         );
 
-        pperfil.addTab("Perfil", jPanel6);
+        tabbedPrincipal.addTab("Sair", Logout);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pperfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tabbedPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pperfil, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE)
+            .addComponent(tabbedPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE)
         );
 
         pack();
@@ -1570,7 +1755,10 @@ public class Tela extends javax.swing.JFrame {
         jTabbedPane2.setSelectedIndex(0);
         dataSql = new java.sql.Date(jCalendar1.getDate().getTime());
         jLabel2.setText(dataSql.toString());
+        DefaultTableModel dtm11 = (DefaultTableModel) tabelCompromisso.getModel();
+        dtm11.setRowCount(0);
         
+        listaInicio();
     }//GEN-LAST:event_jCalendar1PropertyChange
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1578,7 +1766,10 @@ public class Tela extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         jLabel36.setText(sdf.format(dataSql));
         
+        DefaultTableModel dtm12 = (DefaultTableModel) tabelContatosCompromisso.getModel();
+        dtm12.setRowCount(0);
         
+        buscarTabela();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void titulocompromissoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titulocompromissoActionPerformed
@@ -1873,6 +2064,9 @@ public class Tela extends javax.swing.JFrame {
             con.close();
             JOptionPane.showMessageDialog(null, "Compromisso Criado!");
             
+            titulocompromisso.setText("");
+            jTextArea1.setText("");
+            jTextField3.setText("");
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -1901,21 +2095,23 @@ public class Tela extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
          
+        int[] id_pessoa_compromisso = tabelContatosCompromisso.getSelectedRows();
         
-         
+        for(int i = 0; i < id_pessoa_compromisso.length; i++){
         Connection con2;
-
+        
         String query2 = "INSERT INTO tb_contato_pertence_compromisso VALUES (?,?)";
         PreparedStatement ps2;
         
          try {
-            int id_pessoa_compromisso = Integer.parseInt(tabelContatosCompromisso.getValueAt(tabelContatosCompromisso.getSelectedRow(), 0).toString());
+            
+            int id_pessoa_compromisso_row = Integer.parseInt(tabelContatosCompromisso.getValueAt(id_pessoa_compromisso[i], 0).toString()); 
             con2 = ConnectionFactory.getConnection();
             con2.setAutoCommit(false);
 
             ps2 = con2.prepareStatement(query2);
             ps2.setInt(1, id_compromisso_FK);
-            ps2.setInt(2, id_pessoa_compromisso);
+            ps2.setInt(2, id_pessoa_compromisso_row);
             ps2.execute();
 
             con2.commit();
@@ -1924,12 +2120,149 @@ public class Tela extends javax.swing.JFrame {
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
         }
+        
+        jTabbedPane2.setSelectedIndex(0);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void tabelContatosCompromissoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelContatosCompromissoMouseReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_tabelContatosCompromissoMouseReleased
+
+    private void tabelCompromissoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelCompromissoMouseReleased
+        id_compromisso_now = Integer.parseInt(tabelCompromisso.getValueAt(tabelCompromisso.getSelectedRow(), 5).toString());
+        
+        Connection con;
+        
+        String query = "SELECT * FROM tb_compromisso WHERE ID_COMPROMISSO = ?";
+        PreparedStatement ps;
+        ResultSet rs;
+        String titulo = "";
+        String descricao = "";
+        String local = "";
+        String dataInicio = "";
+        String dataFim = "";
+        String hInicio = "";
+        String hFim = "";
+        try {
+            ConnectionFactory cf = new ConnectionFactory();
+            con = cf.getConnection();
+            con.setAutoCommit(false);
+            ps = con.prepareStatement(query);
+            ps.setInt(1, id_compromisso_now);
+            rs = ps.executeQuery();
+            
+            con.commit();
+            
+            
+            while (rs.next()) {
+                id_compromisso_now = rs.getInt("ID_COMPROMISSO");
+                titulo = rs.getString("TITULO");
+                descricao = rs.getString("DESCRICAO");
+                local = rs.getString("LOCAL_COMPROMISSO");
+                dataInicio = rs.getString("DATA_INICIO");
+                dataFim = rs.getString("DATA_FINAL");
+                hInicio = rs.getString("HORARIO_INICIO");
+                hFim = rs.getString("HORARIO_FINAL");
+
+            }
+            ps.close();
+            con.close();
+            
+            jLabel51.setText(titulo);
+            
+            jLabel49.setText("Descrição: " + descricao);
+            
+            jLabel55.setText("Local: " + local);
+            
+            jLabel58.setText("Data de Início: " + dataInicio);
+            
+            jLabel59.setText("Data Final: " + dataFim);
+            
+            jLabel53.setText("Hora Início: " + hInicio);
+            
+            jLabel54.setText("Hora Final: " + hFim);
+            
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+        
+        Connection con2;
+        
+        String query2 = "SELECT * FROM tb_pessoa WHERE ID_PESSOA IN (SELECT ID_PESSOA_CONTATO FROM tb_contato_pertence_compromisso WHERE ID_COMPROMISSO = ?)";
+        PreparedStatement ps2;
+        ResultSet rs2;
+        String[] nome_contato = new String[10];
+        int index = 0;
+        try {
+            ConnectionFactory cf2 = new ConnectionFactory();
+            con2 = cf2.getConnection();
+            con2.setAutoCommit(false);
+            ps2 = con2.prepareStatement(query2);
+            ps2.setInt(1, id_compromisso_now);
+            rs2 = ps2.executeQuery();
+            
+            con2.commit();
+            
+            DefaultListModel list = new DefaultListModel();
+            while (rs2.next()) {
+                jLabel46.setVisible(true);
+                jList1.setVisible(true);
+                nome_contato[index] = rs2.getString("NOME");
+                
+                
+                list.addElement(nome_contato[index]);
+                
+                index++;
+            }
+            jList1.setModel(list);
+            ps2.close();
+            con2.close();
+            
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_tabelCompromissoMouseReleased
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        DefaultTableModel dtm13 = (DefaultTableModel) tabelCompromisso.getModel();
+        dtm13.setRowCount(0);
+        listaInicio();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void tabbedPrincipalMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabbedPrincipalMouseReleased
+        DefaultTableModel dtm12 = (DefaultTableModel) tabelContatos.getModel();
+        dtm12.setRowCount(0);
+        
+        buscarTabela();
+        
+        int selected = tabbedPrincipal.getSelectedIndex();
+        if(selected == 2){
+            this.idUsuario = 0;
+            this.logado = false;
+            
+            this.setVisible(false);
+            TelaLogin tl = new TelaLogin();
+            tl.setLocationRelativeTo(null);
+            tl.setVisible(true);
+
+            ImageIcon image = new ImageIcon("./util/calendar.png");  
+
+            tl.setIconImage(image.getImage());
+            
+        }
+    }//GEN-LAST:event_tabbedPrincipalMouseReleased
+
+    private void fieldCidadeContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldCidadeContatoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldCidadeContatoActionPerformed
     
     public int getIdade(Date data_nasc){
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy");
@@ -1978,6 +2311,7 @@ public class Tela extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Logout;
     private javax.swing.JButton btnExcluirContato;
     private javax.swing.JButton btnSalvarAdicionarContato;
     private javax.swing.JButton btnSalvarAlteracoesContato;
@@ -2002,6 +2336,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
@@ -2044,18 +2379,25 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
@@ -2063,6 +2405,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
@@ -2092,7 +2435,6 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JPanel panelAdicionarContato;
     private javax.swing.JPanel pcontatos;
     private javax.swing.JPanel pinicio;
-    private javax.swing.JTabbedPane pperfil;
     private javax.swing.JLabel showCidadeContato;
     private javax.swing.JLabel showEmailContato;
     private javax.swing.JLabel showEstadoContato;
@@ -2107,6 +2449,8 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel showTelefone2Contato;
     private javax.swing.JTabbedPane tabbedPaneContato;
     private javax.swing.JTabbedPane tabbedPaneContato2;
+    private javax.swing.JTabbedPane tabbedPrincipal;
+    public javax.swing.JTable tabelCompromisso;
     public javax.swing.JTable tabelContatos;
     public javax.swing.JTable tabelContatosCompromisso;
     private javax.swing.JTextField tfAlteraCidade;
